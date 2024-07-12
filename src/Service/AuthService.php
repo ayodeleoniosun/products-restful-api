@@ -7,6 +7,7 @@ use App\Enum\StatusEnum;
 use App\Repository\UserRepository;
 use DateMalformedStringException;
 use Doctrine\ORM\EntityManagerInterface;
+use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -29,8 +30,7 @@ class AuthService
         UserPasswordHasherInterface $passwordHasher,
         EntityManagerInterface $entityManager,
     ): array {
-        $data = $request->getContent();
-        $user = $serializer->deserialize($data, User::class, 'json');
+        $user = $this->serializePayload($request, $serializer);
 
         $validationResponse = $this->validateRegistrationPayload($validator, $user);
 
@@ -65,6 +65,12 @@ class AuthService
         ];
     }
 
+    public function serializePayload(Request $request, SerializerInterface $serializer)
+    {
+        $data = $request->getContent();
+        return $serializer->deserialize($data, User::class, 'json');
+    }
+
     protected function validateRegistrationPayload(ValidatorInterface $validator, User $user): ?array
     {
         $errors = $validator->validate($user);
@@ -77,5 +83,39 @@ class AuthService
             'status' => StatusEnum::ERROR->value,
             'message' => $errors[0]->getMessage(),
         ];
+    }
+
+    public function login(
+        Request $request,
+        SerializerInterface $serializer,
+        UserPasswordHasherInterface $passwordHasher,
+        JWTTokenManagerInterface $JWTManager,
+    ) {
+        $user = $this->serializePayload($request, $serializer);
+
+        $getUser = $this->userRepository->findOneBy(['email' => $user->email]);
+
+        if (!$getUser) {
+            return [
+                'status' => StatusEnum::ERROR->value,
+                'message' => 'User not found',
+            ];
+        }
+
+        $isPasswordValid = $passwordHasher->isPasswordValid($getUser, $user->password);
+
+        if (!$isPasswordValid) {
+            return [
+                'status' => StatusEnum::ERROR->value,
+                'message' => 'Invalid login credentials',
+            ];
+        }
+
+        return [
+            'status' => StatusEnum::SUCCESS->value,
+            'message' => 'Login successful',
+            'token' => $JWTManager->create($getUser),
+        ];
+
     }
 }

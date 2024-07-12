@@ -1,4 +1,14 @@
 register:
-  path: /register
+  path: /api/auth/register
   controller: App\Controller\AuthController::register
+  methods: POST
+
+login:
+  path: /api/auth/loginn
+  controller: App\Controller\AuthController::login
+  methods: POST
+
+add_product:
+  path: /api/products
+  controller: App\Controller\ProductController::create
   methods: POST

@@ -9,30 +9,25 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
 {
+    #[ORM\Column(length: 255)]
+    public ?string $name = null;
+
+    #[ORM\Column]
+    public ?DateTimeImmutable $createdAt = null;
+
+    #[ORM\Column]
+    public ?DateTimeImmutable $updatedAt = null;
+    #[ORM\ManyToOne(inversedBy: 'products')]
+    #[ORM\JoinColumn(nullable: false)]
+    public ?User $user = null;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
-    #[ORM\ManyToOne(inversedBy: 'products')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $user = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $name = null;
-
     #[ORM\Column(length: 255)]
     private ?string $description = null;
-
     #[ORM\Column]
     private ?int $price = null;
-
-    #[ORM\Column]
-    private ?DateTimeImmutable $createdAt = null;
-
-    #[ORM\Column]
-    private ?DateTimeImmutable $updatedAt = null;
-
     #[ORM\Column(nullable: true)]
     private ?DateTimeImmutable $deletedAt = null;
 
