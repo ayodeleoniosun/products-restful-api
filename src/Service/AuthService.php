@@ -3,11 +3,12 @@
 namespace App\Service;
 
 use App\Entity\User;
-use App\Enum\StatusEnum;
+use App\Exception\CustomException;
 use App\Repository\UserRepository;
 use DateMalformedStringException;
 use Doctrine\ORM\EntityManagerInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -22,6 +23,7 @@ class AuthService
 
     /**
      * @throws DateMalformedStringException
+     * @throws CustomException
      */
     public function register(
         Request $request,
@@ -29,25 +31,15 @@ class AuthService
         SerializerInterface $serializer,
         UserPasswordHasherInterface $passwordHasher,
         EntityManagerInterface $entityManager,
-    ): array {
+    ): JsonResponse|string {
         $user = $this->serializePayload($request, $serializer);
 
-        $validationResponse = $this->validateRegistrationPayload($validator, $user);
-
-        if (isset($validationResponse['status']) && $validationResponse['status'] === StatusEnum::ERROR->value) {
-            return [
-                'status' => $validationResponse['status'],
-                'message' => $validationResponse['message'],
-            ];
-        }
+        $this->validateRegistrationPayload($validator, $user);
 
         $userExist = $this->userRepository->findOneBy(['email' => $user->email]);
 
         if ($userExist) {
-            return [
-                'status' => StatusEnum::ERROR->value,
-                'message' => 'User already exist',
-            ];
+            throw new CustomException('User already exist');
         }
 
         $user->password = $passwordHasher->hashPassword($user, $user->password);
@@ -56,13 +48,7 @@ class AuthService
 
         $this->userRepository->create($entityManager, $user);
 
-        $data = $serializer->serialize($user, 'json');
-
-        return [
-            'status' => StatusEnum::SUCCESS->value,
-            'message' => 'User successfully registered',
-            'data' => $data,
-        ];
+        return $serializer->serialize($user, 'json');
     }
 
     public function serializePayload(Request $request, SerializerInterface $serializer)
@@ -71,6 +57,9 @@ class AuthService
         return $serializer->deserialize($data, User::class, 'json');
     }
 
+    /**
+     * @throws CustomException
+     */
     protected function validateRegistrationPayload(ValidatorInterface $validator, User $user): ?array
     {
         $errors = $validator->validate($user);
@@ -79,10 +68,7 @@ class AuthService
             return null;
         }
 
-        return [
-            'status' => StatusEnum::ERROR->value,
-            'message' => $errors[0]->getMessage(),
-        ];
+        throw new CustomException($errors[0]->getMessage());
     }
 
     public function login(
@@ -90,32 +76,21 @@ class AuthService
         SerializerInterface $serializer,
         UserPasswordHasherInterface $passwordHasher,
         JWTTokenManagerInterface $JWTManager,
-    ) {
+    ): JsonResponse|string {
         $user = $this->serializePayload($request, $serializer);
 
         $getUser = $this->userRepository->findOneBy(['email' => $user->email]);
 
         if (!$getUser) {
-            return [
-                'status' => StatusEnum::ERROR->value,
-                'message' => 'User not found',
-            ];
+            throw new CustomException('User not found');
         }
 
         $isPasswordValid = $passwordHasher->isPasswordValid($getUser, $user->password);
 
         if (!$isPasswordValid) {
-            return [
-                'status' => StatusEnum::ERROR->value,
-                'message' => 'Invalid login credentials',
-            ];
+            throw new CustomException('Invalid login credentials');
         }
 
-        return [
-            'status' => StatusEnum::SUCCESS->value,
-            'message' => 'Login successful',
-            'token' => $JWTManager->create($getUser),
-        ];
-
+        return $JWTManager->create($getUser);
     }
 }

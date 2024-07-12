@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace App\Controller;
 
 use App\Enum\StatusEnum;
+use App\Exception\CustomException;
 use App\Service\AuthService;
 use DateMalformedStringException;
 use Doctrine\ORM\EntityManagerInterface;
@@ -31,22 +32,16 @@ class AuthController extends AbstractController
     ): Response {
         $response = $this->authService->login($request, $serializer, $passwordHasher, $JWTManager);
 
-        if ($response['status'] === StatusEnum::ERROR->value) {
-            return new JsonResponse([
-                'status' => StatusEnum::ERROR->value,
-                'message' => $response['message'],
-            ], Response::HTTP_BAD_REQUEST);
-        }
-
         return new JsonResponse([
             'status' => StatusEnum::SUCCESS->value,
-            'message' => 'User successfully logged in',
-            'token' => $response['token'],
+            'message' => 'Login successful',
+            'token' => $response,
         ], Response::HTTP_OK);
     }
 
     /**
      * @throws DateMalformedStringException
+     * @throws CustomException
      */
     public function register(
         Request $request,
@@ -57,17 +52,10 @@ class AuthController extends AbstractController
     ): Response {
         $response = $this->authService->register($request, $validator, $serializer, $passwordHasher, $entityManager);
 
-        if ($response['status'] === StatusEnum::ERROR->value) {
-            return new JsonResponse([
-                'status' => StatusEnum::ERROR->value,
-                'message' => $response['message'],
-            ], Response::HTTP_BAD_REQUEST);
-        }
-
         return new JsonResponse([
             'status' => StatusEnum::SUCCESS->value,
             'message' => 'User successfully registered',
-            'data' => json_decode($response['data']),
+            'data' => json_decode($response),
         ], Response::HTTP_CREATED);
     }
 }
