@@ -20,17 +20,16 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class AuthController extends AbstractController
 {
-    public function __construct(public AuthService $authService)
-    {
+    public function __construct(
+        public AuthService $authService,
+        public SerializerInterface $serializer,
+        public UserPasswordHasherInterface $passwordHasher,
+    ) {
     }
 
-    public function login(
-        Request $request,
-        SerializerInterface $serializer,
-        UserPasswordHasherInterface $passwordHasher,
-        JWTTokenManagerInterface $JWTManager,
-    ): Response {
-        $response = $this->authService->login($request, $serializer, $passwordHasher, $JWTManager);
+    public function login(Request $request, JWTTokenManagerInterface $JWTManager): Response
+    {
+        $response = $this->authService->login($request, $this->serializer, $this->passwordHasher, $JWTManager);
 
         return new JsonResponse([
             'status' => StatusEnum::SUCCESS->value,
@@ -46,11 +45,10 @@ class AuthController extends AbstractController
     public function register(
         Request $request,
         ValidatorInterface $validator,
-        SerializerInterface $serializer,
-        UserPasswordHasherInterface $passwordHasher,
         EntityManagerInterface $entityManager,
     ): Response {
-        $response = $this->authService->register($request, $validator, $serializer, $passwordHasher, $entityManager);
+        $response = $this->authService->register($request, $validator, $this->serializer, $this->passwordHasher,
+            $entityManager);
 
         return new JsonResponse([
             'status' => StatusEnum::SUCCESS->value,

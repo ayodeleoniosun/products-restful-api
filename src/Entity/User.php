@@ -17,6 +17,7 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User implements PasswordAuthenticatedUserInterface, UserInterface
 {
+
     #[ORM\Column(length: 255)]
     public ?string $password = null;
 
@@ -30,7 +31,7 @@ class User implements PasswordAuthenticatedUserInterface, UserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    public ?int $id = null;
     #[ORM\Column(length: 255)]
     private ?string $firstname = null;
     #[ORM\Column(length: 255)]
@@ -41,7 +42,10 @@ class User implements PasswordAuthenticatedUserInterface, UserInterface
     /**
      * @var Collection<int, Product>
      */
-    #[ORM\OneToMany(targetEntity: Product::class, mappedBy: 'userId')]
+    /**
+     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="user")
+     */
+
     private Collection $products;
 
     public function __construct()

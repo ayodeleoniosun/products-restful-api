@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Enum\StatusEnum;
 use App\Service\ProductService;
+use DateMalformedStringException;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -16,29 +17,24 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class ProductController extends AbstractController
 {
-    public function __construct(public ProductService $productService)
-    {
+    public function __construct(
+        public ProductService $productService,
+        public EntityManagerInterface $entityManager,
+        public SerializerInterface $serializer,
+    ) {
     }
 
-    public function create(
-        Request $request,
-        ValidatorInterface $validator,
-        SerializerInterface $serializer,
-        EntityManagerInterface $entityManager,
-    ): Response {
-        $response = $this->productService->create($request, $validator, $serializer, $entityManager);
-
-        if ($response['status'] === StatusEnum::ERROR->value) {
-            return new JsonResponse([
-                'status' => StatusEnum::ERROR->value,
-                'message' => $response['message'],
-            ], Response::HTTP_BAD_REQUEST);
-        }
+    /**
+     * @throws DateMalformedStringException
+     */
+    public function create(Request $request, ValidatorInterface $validator): Response
+    {
+        $response = $this->productService->create($request, $validator, $this->serializer, $this->entityManager);
 
         return new JsonResponse([
             'status' => StatusEnum::SUCCESS->value,
             'message' => 'Product successfully created',
-            'data' => json_decode($response['data']),
+            'data' => json_decode($response),
         ], Response::HTTP_CREATED);
     }
 }

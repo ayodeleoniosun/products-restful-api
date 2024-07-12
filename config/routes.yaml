@@ -8,7 +8,7 @@ login:
   controller: App\Controller\AuthController::login
   methods: POST
 
-add_product:
+create_product:
   path: /api/products
   controller: App\Controller\ProductController::create
   methods: POST

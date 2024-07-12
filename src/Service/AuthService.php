@@ -60,7 +60,7 @@ class AuthService
     /**
      * @throws CustomException
      */
-    protected function validateRegistrationPayload(ValidatorInterface $validator, User $user): ?array
+    protected function validateRegistrationPayload(ValidatorInterface $validator, User $user)
     {
         $errors = $validator->validate($user);
 
@@ -77,15 +77,15 @@ class AuthService
         UserPasswordHasherInterface $passwordHasher,
         JWTTokenManagerInterface $JWTManager,
     ): JsonResponse|string {
-        $user = $this->serializePayload($request, $serializer);
+        $data = json_decode($request->getContent());
 
-        $getUser = $this->userRepository->findOneBy(['email' => $user->email]);
+        $getUser = $this->userRepository->findOneBy(['email' => $data->username]);
 
         if (!$getUser) {
             throw new CustomException('User not found');
         }
 
-        $isPasswordValid = $passwordHasher->isPasswordValid($getUser, $user->password);
+        $isPasswordValid = $passwordHasher->isPasswordValid($getUser, $data->password);
 
         if (!$isPasswordValid) {
             throw new CustomException('Invalid login credentials');

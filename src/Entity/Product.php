@@ -5,6 +5,9 @@ namespace App\Entity;
 use App\Repository\ProductRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
@@ -17,19 +20,46 @@ class Product
 
     #[ORM\Column]
     public ?DateTimeImmutable $updatedAt = null;
+
     #[ORM\ManyToOne(inversedBy: 'products')]
     #[ORM\JoinColumn(nullable: false)]
     public ?User $user = null;
+    #[ORM\Column(length: 255)]
+    public ?string $description = null;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-    #[ORM\Column(length: 255)]
-    private ?string $description = null;
     #[ORM\Column]
     private ?int $price = null;
+
     #[ORM\Column(nullable: true)]
     private ?DateTimeImmutable $deletedAt = null;
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata): void
+    {
+        $metadata->addPropertyConstraints('name', [
+            new NotBlank([
+                'message' => 'Product name cannot be blank.',
+            ]),
+            new Length([
+                'min' => 3,
+                'max' => 20,
+                'minMessage' => 'Product name must not be less than 3 characters.',
+                'maxMessage' => 'Product name must not be more than 20 characters.',
+            ]),
+        ])->addPropertyConstraints('description', [
+            new NotBlank([
+                'message' => 'Product description cannot be blank.',
+            ]),
+            new Length([
+                'min' => 3,
+                'minMessage' => 'Product description must not be less than 3 characters',
+            ]),
+        ])->addPropertyConstraint('price', new NotBlank([
+            'message' => 'Product price cannot be blank.',
+        ]));
+    }
 
     public function getId(): ?int
     {

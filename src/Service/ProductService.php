@@ -3,8 +3,9 @@
 namespace App\Service;
 
 use App\Entity\Product;
-use App\Enum\StatusEnum;
+use App\Exception\CustomException;
 use App\Repository\ProductRepository;
+use App\Repository\UserRepository;
 use DateMalformedStringException;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +15,7 @@ use function Symfony\Component\Clock\now;
 
 class ProductService
 {
-    public function __construct(public ProductRepository $productRepository)
+    public function __construct(public ProductRepository $productRepository, public UserRepository $userRepository)
     {
     }
 
@@ -26,39 +27,28 @@ class ProductService
         ValidatorInterface $validator,
         SerializerInterface $serializer,
         EntityManagerInterface $entityManager,
-    ): array {
+    ): string {
         $product = $this->serializePayload($request, $serializer);
+        $product->name = strtolower($product->name);
+        $product->description = strtolower($product->description);
 
-        $validationResponse = $this->validatePayload($validator, $product);
-
-        if (isset($validationResponse['status']) && $validationResponse['status'] === StatusEnum::ERROR->value) {
-            return [
-                'status' => $validationResponse['status'],
-                'message' => $validationResponse['message'],
-            ];
-        }
+        $this->validatePayload($validator, $product);
 
         $productExist = $this->productRepository->findOneBy(['name' => $product->name]);
 
         if ($productExist) {
-            return [
-                'status' => StatusEnum::ERROR->value,
-                'message' => 'Product already exist',
-            ];
+            throw new CustomException('Product already exist');
         }
 
         $product->createdAt = now();
         $product->updatedAt = now();
 
+        $user = $this->userRepository->find(1);
+        $product->user = $user;
+
         $this->productRepository->create($entityManager, $product);
 
-        $data = $serializer->serialize($product, 'json');
-
-        return [
-            'status' => StatusEnum::SUCCESS->value,
-            'message' => 'Product successfully added',
-            'data' => $data,
-        ];
+        return $serializer->serialize($product, 'json');
     }
 
     public function serializePayload(Request $request, SerializerInterface $serializer)
@@ -68,7 +58,7 @@ class ProductService
         return $serializer->deserialize($data, Product::class, 'json');
     }
 
-    protected function validatePayload(ValidatorInterface $validator, Product $product): ?array
+    protected function validatePayload(ValidatorInterface $validator, Product $product)
     {
         $errors = $validator->validate($product);
 
@@ -76,9 +66,6 @@ class ProductService
             return null;
         }
 
-        return [
-            'status' => StatusEnum::ERROR->value,
-            'message' => $errors[0]->getMessage(),
-        ];
+        throw new CustomException($errors[0]->getMessage());
     }
 }
