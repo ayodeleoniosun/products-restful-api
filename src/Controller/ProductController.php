@@ -8,6 +8,8 @@ use App\Enum\StatusEnum;
 use App\Service\ProductService;
 use DateMalformedStringException;
 use Doctrine\ORM\EntityManagerInterface;
+use Lexik\Bundle\JWTAuthenticationBundle\Exception\JWTDecodeFailureException;
+use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,11 +23,12 @@ class ProductController extends AbstractController
         public ProductService $productService,
         public EntityManagerInterface $entityManager,
         public SerializerInterface $serializer,
+        public JWTTokenManagerInterface $JWTManager,
     ) {
     }
 
     /**
-     * @throws DateMalformedStringException
+     * @throws DateMalformedStringException|JWTDecodeFailureException
      */
     public function create(Request $request, ValidatorInterface $validator): Response
     {

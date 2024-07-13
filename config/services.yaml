@@ -10,6 +10,16 @@ services:
     class: App\EventListener\ExceptionListener
     tags:
       - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
+  acme_api.event.jwt_created_listener:
+    class: App\EventListener\JWT\JWTCreatedListener
+    arguments: [ '@request_stack' ]
+    tags:
+      - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: onJWTCreated }
+  acme_api.event.jwt_decoded_listener:
+    class: App\EventListener\JWT\JWTDecodedListener
+    arguments: [ '@request_stack' ]
+    tags:
+      - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_decoded, method: onJWTDecoded }
   # default configuration for services in *this* file
   _defaults:
     autowire: true      # Automatically injects dependencies in your services.
