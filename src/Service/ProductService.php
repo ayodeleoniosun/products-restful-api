@@ -26,6 +26,24 @@ class ProductService
 
     }
 
+    public function index(Request $request, SerializerInterface $serializer): string
+    {
+        $products = $this->productRepository->findAll();
+
+        return $serializer->serialize($products, 'json');
+    }
+
+    public function show(string $id, Request $request, SerializerInterface $serializer): string
+    {
+        $product = $this->productRepository->find($id);
+
+        if (!$product) {
+            throw new CustomException('Product not found', Response::HTTP_NOT_FOUND);
+        }
+
+        return $serializer->serialize($product, 'json');
+    }
+
     /**
      * @throws DateMalformedStringException
      * @throws JWTDecodeFailureException

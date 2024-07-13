@@ -28,17 +28,30 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @throws DateMalformedStringException|JWTDecodeFailureException
      */
-    public function store(Request $request, ValidatorInterface $validator): Response
+    public function index(Request $request): Response
     {
-        $response = $this->productService->store($request, $validator, $this->serializer, $this->entityManager);
+        $response = $this->productService->index($request, $this->serializer);
 
         return new JsonResponse([
             'status' => StatusEnum::SUCCESS->value,
-            'message' => 'Product successfully created',
+            'message' => 'All products retrieved',
             'data' => json_decode($response),
-        ], Response::HTTP_CREATED);
+        ], Response::HTTP_OK);
+    }
+
+    /**
+     * @throws DateMalformedStringException|JWTDecodeFailureException
+     */
+    public function show(string $id, Request $request): Response
+    {
+        $response = $this->productService->show($id, $request, $this->serializer);
+
+        return new JsonResponse([
+            'status' => StatusEnum::SUCCESS->value,
+            'message' => 'Product details retrieved',
+            'data' => json_decode($response),
+        ], Response::HTTP_OK);
     }
 
     /**
@@ -54,5 +67,19 @@ class ProductController extends AbstractController
             'message' => 'Product successfully updated',
             'data' => json_decode($response),
         ], Response::HTTP_OK);
+    }
+
+    /**
+     * @throws DateMalformedStringException|JWTDecodeFailureException
+     */
+    public function store(Request $request, ValidatorInterface $validator): Response
+    {
+        $response = $this->productService->store($request, $validator, $this->serializer, $this->entityManager);
+
+        return new JsonResponse([
+            'status' => StatusEnum::SUCCESS->value,
+            'message' => 'Product successfully created',
+            'data' => json_decode($response),
+        ], Response::HTTP_CREATED);
     }
 }

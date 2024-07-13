@@ -8,6 +8,16 @@ login:
   controller: App\Controller\AuthController::login
   methods: POST
 
+all_products:
+  path: /api/products
+  controller: App\Controller\ProductController::index
+  methods: GET
+
+show_product:
+  path: /api/products/{id}
+  controller: App\Controller\ProductController::show
+  methods: GET
+
 create_product:
   path: /api/products
   controller: App\Controller\ProductController::store
