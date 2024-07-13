@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  product_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: product_app
+    ports:
+      - '9001:9000'
+    volumes:
+      - ./:/var/www
+    depends_on:
+      - product_db
+
+  product_webserver:
+    build: ./
+    container_name: product_webserver
+    image: nginx:alpine
+    env_file: ./.env
+    ports:
+      - '8085:80'
+    depends_on:
+      - product_app
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+
+  product_db:
+    image: mysql:8
+    container_name: product_db
+    restart: unless-stopped
+    env_file: ./.env
+    ports:
+      - '3307:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=$DB_PASSWORD
+      - MYSQL_PASSWORD=$DB_PASSWORD
+      - MYSQL_DATABASE=$DB_NAME
+    volumes:
+      - db:/var/lib/mysql
+
+volumes:
+  db:
