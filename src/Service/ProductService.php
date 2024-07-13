@@ -35,7 +35,7 @@ class ProductService
 
     public function show(string $id, Request $request, SerializerInterface $serializer): string
     {
-        $product = $this->productRepository->find($id);
+        $product = $this->productRepository->findRecordBy(compact('id'));
 
         if (!$product) {
             throw new CustomException('Product not found', Response::HTTP_NOT_FOUND);
@@ -63,7 +63,7 @@ class ProductService
 
         $this->validatePayload($validator, $product);
 
-        $productExist = $this->productRepository->findOneBy(['name' => $product->name, 'user' => $user]);
+        $productExist = $this->productRepository->findRecordBy(['name' => $product->name, 'user' => $user]);
 
         if ($productExist) {
             throw new CustomException('Product already exist');
@@ -121,7 +121,7 @@ class ProductService
         $token = $this->decodeToken($request);
         $user = $this->userRepository->find($token['user_id']);
 
-        $getProduct = $this->productRepository->findOneBy(compact('id', 'user'));
+        $getProduct = $this->productRepository->findRecordBy(compact('id', 'user'));
 
         if (!$getProduct) {
             throw new CustomException('Product not found', Response::HTTP_NOT_FOUND);
@@ -140,6 +140,33 @@ class ProductService
         }
 
         $getProduct->updatedAt = now();
+        $getProduct->id = $id;
+
+        $this->productRepository->createOrUpdate($entityManager, $getProduct, 'update');
+
+        return $serializer->serialize($getProduct, 'json');
+    }
+
+    /**
+     * @throws DateMalformedStringException
+     * @throws JWTDecodeFailureException
+     */
+    public function delete(
+        string $id,
+        Request $request,
+        SerializerInterface $serializer,
+        EntityManagerInterface $entityManager,
+    ): string {
+        $token = $this->decodeToken($request);
+        $user = $this->userRepository->find($token['user_id']);
+
+        $getProduct = $this->productRepository->findRecordBy(compact('id', 'user'));
+
+        if (!$getProduct) {
+            throw new CustomException('Product not found', Response::HTTP_NOT_FOUND);
+        }
+
+        $getProduct->deletedAt = now();
         $getProduct->id = $id;
 
         $this->productRepository->createOrUpdate($entityManager, $getProduct, 'update');

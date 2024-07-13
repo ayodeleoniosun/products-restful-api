@@ -27,3 +27,8 @@ update_product:
   path: /api/products/{id}
   controller: App\Controller\ProductController::update
   methods: PUT
+
+delete_product:
+  path: /api/products/{id}
+  controller: App\Controller\ProductController::delete
+  methods: DELETE

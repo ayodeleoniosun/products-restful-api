@@ -27,8 +27,6 @@ class ProductController extends AbstractController
     ) {
     }
 
-    /**
-     */
     public function index(Request $request): Response
     {
         $response = $this->productService->index($request, $this->serializer);
@@ -40,9 +38,6 @@ class ProductController extends AbstractController
         ], Response::HTTP_OK);
     }
 
-    /**
-     * @throws DateMalformedStringException|JWTDecodeFailureException
-     */
     public function show(string $id, Request $request): Response
     {
         $response = $this->productService->show($id, $request, $this->serializer);
@@ -51,6 +46,19 @@ class ProductController extends AbstractController
             'status' => StatusEnum::SUCCESS->value,
             'message' => 'Product details retrieved',
             'data' => json_decode($response),
+        ], Response::HTTP_OK);
+    }
+
+    /**
+     * @throws DateMalformedStringException|JWTDecodeFailureException
+     */
+    public function delete(string $id, Request $request): Response
+    {
+        $response = $this->productService->delete($id, $request, $this->serializer, $this->entityManager);
+
+        return new JsonResponse([
+            'status' => StatusEnum::SUCCESS->value,
+            'message' => 'Product successfully deleted',
         ], Response::HTTP_OK);
     }
 

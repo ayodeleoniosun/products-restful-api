@@ -30,11 +30,10 @@ class Product
     #[ORM\GeneratedValue]
     #[ORM\Column]
     public ?int $id = null;
+    #[ORM\Column(nullable: true)]
+    public ?DateTimeImmutable $deletedAt = null;
     #[ORM\Column]
     private ?int $price = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?DateTimeImmutable $deletedAt = null;
 
     public static function loadValidatorMetadata(ClassMetadata $metadata): void
     {
