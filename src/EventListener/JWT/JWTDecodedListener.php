@@ -16,7 +16,6 @@ class JWTDecodedListener
      */
     public function __construct(public RequestStack $requestStack, public UserRepository $userRepository)
     {
-
     }
 
     /**

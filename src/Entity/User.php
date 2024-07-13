@@ -17,25 +17,25 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User implements PasswordAuthenticatedUserInterface, UserInterface
 {
-
     #[ORM\Column(length: 255)]
-    public ?string $password = null;
+    public string $password;
 
     #[ORM\Column]
-    public ?DateTimeImmutable $createdAt = null;
+    public DateTimeImmutable $createdAt;
 
     #[ORM\Column]
-    public ?DateTimeImmutable $updatedAt = null;
+    public DateTimeImmutable $updatedAt;
     #[ORM\Column(length: 255)]
-    public ?string $email = null;
+    public string $email;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     public ?int $id = null;
     #[ORM\Column(length: 255)]
-    private ?string $firstname = null;
+    private string $firstname;
     #[ORM\Column(length: 255)]
-    private ?string $lastname = null;
+    private string $lastname;
     #[ORM\Column(nullable: true)]
     private ?DateTimeImmutable $deletedAt = null;
 
@@ -46,7 +46,7 @@ class User implements PasswordAuthenticatedUserInterface, UserInterface
      * @ORM\OneToMany(targetEntity=Product::class, mappedBy="user")
      */
 
-    private Collection $products;
+    private ArrayCollection $products;
 
     public function __construct()
     {
@@ -190,28 +190,6 @@ class User implements PasswordAuthenticatedUserInterface, UserInterface
         return $this->products;
     }
 
-    public function addProduct(Product $product): static
-    {
-        if (!$this->products->contains($product)) {
-            $this->products->add($product);
-            $product->setUserId($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProduct(Product $product): static
-    {
-        if ($this->products->removeElement($product)) {
-            // set the owning side to null (unless already changed)
-            if ($product->getUserId() === $this) {
-                $product->setUserId(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getRoles(): array
     {
         return [];
@@ -225,7 +203,6 @@ class User implements PasswordAuthenticatedUserInterface, UserInterface
      */
     public function eraseCredentials(): void
     {
-
     }
 
     /**

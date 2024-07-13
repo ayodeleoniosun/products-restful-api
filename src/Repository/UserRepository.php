@@ -17,7 +17,7 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
-    public function create(EntityManagerInterface $entityManager, User $user)
+    public function create(EntityManagerInterface $entityManager, User $user): void
     {
         $entityManager->persist($user);
         $entityManager->flush();

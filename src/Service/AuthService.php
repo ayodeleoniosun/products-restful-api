@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+
 use function Symfony\Component\Clock\now;
 
 class AuthService
@@ -31,9 +32,8 @@ class AuthService
         SerializerInterface $serializer,
         UserPasswordHasherInterface $passwordHasher,
         EntityManagerInterface $entityManager,
-    ): JsonResponse|string {
+    ): mixed {
         $user = $this->serializePayload($request, $serializer);
-
         $this->validateRegistrationPayload($validator, $user);
 
         $userExist = $this->userRepository->findOneBy(['email' => $user->email]);
@@ -48,19 +48,20 @@ class AuthService
 
         $this->userRepository->create($entityManager, $user);
 
-        return $serializer->serialize($user, 'json');
+        return json_decode($serializer->serialize($user, 'json'));
     }
 
-    public function serializePayload(Request $request, SerializerInterface $serializer)
+    public function serializePayload(Request $request, SerializerInterface $serializer): User
     {
         $data = $request->getContent();
+
         return $serializer->deserialize($data, User::class, 'json');
     }
 
     /**
      * @throws CustomException
      */
-    protected function validateRegistrationPayload(ValidatorInterface $validator, User $user)
+    protected function validateRegistrationPayload(ValidatorInterface $validator, User $user): CustomException|null
     {
         $errors = $validator->validate($user);
 

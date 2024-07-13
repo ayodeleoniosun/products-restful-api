@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Controller;
 
@@ -67,8 +67,13 @@ class ProductController extends AbstractController
      */
     public function update(string $id, Request $request, ValidatorInterface $validator): Response
     {
-        $response = $this->productService->update($id, $request, $validator, $this->serializer,
-            $this->entityManager);
+        $response = $this->productService->update(
+            $id,
+            $request,
+            $validator,
+            $this->serializer,
+            $this->entityManager
+        );
 
         return new JsonResponse([
             'status' => StatusEnum::SUCCESS->value,

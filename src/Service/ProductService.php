@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+
 use function Symfony\Component\Clock\now;
 
 class ProductService
@@ -23,7 +24,6 @@ class ProductService
         public UserRepository $userRepository,
         public JWTEncoderInterface $JWTEncoder,
     ) {
-
     }
 
     public function index(Request $request, SerializerInterface $serializer): string
@@ -80,6 +80,8 @@ class ProductService
     }
 
     /**
+     * @param  Request  $request
+     * @return array<string>
      * @throws JWTDecodeFailureException
      */
     public function decodeToken(Request $request): array
@@ -89,14 +91,14 @@ class ProductService
         return $this->JWTEncoder->decode($token);
     }
 
-    public function serializePayload(Request $request, SerializerInterface $serializer)
+    public function serializePayload(Request $request, SerializerInterface $serializer): Product
     {
         $data = $request->getContent();
 
         return $serializer->deserialize($data, Product::class, 'json');
     }
 
-    protected function validatePayload(ValidatorInterface $validator, Product $product)
+    protected function validatePayload(ValidatorInterface $validator, Product $product): CustomException|null
     {
         $errors = $validator->validate($product);
 
@@ -111,6 +113,7 @@ class ProductService
      * @throws DateMalformedStringException
      * @throws JWTDecodeFailureException
      */
+
     public function update(
         string $id,
         Request $request,

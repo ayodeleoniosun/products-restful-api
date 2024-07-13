@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Controller;
 
@@ -47,13 +47,18 @@ class AuthController extends AbstractController
         ValidatorInterface $validator,
         EntityManagerInterface $entityManager,
     ): Response {
-        $response = $this->authService->register($request, $validator, $this->serializer, $this->passwordHasher,
-            $entityManager);
+        $response = $this->authService->register(
+            $request,
+            $validator,
+            $this->serializer,
+            $this->passwordHasher,
+            $entityManager
+        );
 
         return new JsonResponse([
             'status' => StatusEnum::SUCCESS->value,
             'message' => 'User successfully registered',
-            'data' => json_decode($response),
+            'data' => $response,
         ], Response::HTTP_CREATED);
     }
 }

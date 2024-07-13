@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Product;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
@@ -18,8 +19,11 @@ class ProductRepository extends ServiceEntityRepository implements ServiceEntity
         parent::__construct($registry, Product::class);
     }
 
-    public function createOrUpdate(EntityManagerInterface $entityManager, Product $product, string $type = 'create')
-    {
+    public function createOrUpdate(
+        EntityManagerInterface $entityManager,
+        object $product,
+        string $type = 'create',
+    ): void {
         if ($type === 'create') {
             $entityManager->persist($product);
         }
@@ -27,11 +31,20 @@ class ProductRepository extends ServiceEntityRepository implements ServiceEntity
         $entityManager->flush();
     }
 
+    /**
+     * @param  array<string, User|string|null>  $criteria
+     * @param  array<string, string>  $orderBy
+     * @return object|null
+     */
     public function findRecordBy(array $criteria, ?array $orderBy = null): object|null
     {
         $criteria['deletedAt'] = null;
         return $this->findOneBy($criteria, $orderBy);
     }
+
+    /**
+     * @param  array<string, string>  $criteria
+     */
 
     public function findAll(array $criteria = []): array
     {
@@ -39,7 +52,10 @@ class ProductRepository extends ServiceEntityRepository implements ServiceEntity
         return $this->findBy($criteria, ['id' => 'DESC']);
     }
 
-    public function findOneNotById(int $id, array $values): Product|null
+    /**
+     * @param  array<string, string>  $values
+     */
+    public function findOneNotById(string $id, array $values): mixed
     {
         $query = $this->createQueryBuilder('p')
             ->andWhere('p.id != :id')
