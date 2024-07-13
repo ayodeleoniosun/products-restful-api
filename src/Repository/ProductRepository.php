@@ -17,9 +17,27 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
-    public function create(EntityManagerInterface $entityManager, Product $product)
+    public function createOrUpdate(EntityManagerInterface $entityManager, Product $product, string $type = 'create')
     {
-        $entityManager->persist($product);
+        if ($type === 'create') {
+            $entityManager->persist($product);
+        }
+        
         $entityManager->flush();
+    }
+
+    public function findOneNotById(int $id, array $values): Product|null
+    {
+        $query = $this->createQueryBuilder('p')
+            ->andWhere('p.id != :id')
+            ->setParameter('id', $id);
+
+        foreach ($values as $column => $value) {
+            $query->andWhere("p.$column = :$column")
+                ->setParameter($column, $value);
+        }
+
+        return $query->getQuery()
+            ->getOneOrNullResult();
     }
 }

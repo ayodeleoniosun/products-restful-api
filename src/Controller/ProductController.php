@@ -30,14 +30,29 @@ class ProductController extends AbstractController
     /**
      * @throws DateMalformedStringException|JWTDecodeFailureException
      */
-    public function create(Request $request, ValidatorInterface $validator): Response
+    public function store(Request $request, ValidatorInterface $validator): Response
     {
-        $response = $this->productService->create($request, $validator, $this->serializer, $this->entityManager);
+        $response = $this->productService->store($request, $validator, $this->serializer, $this->entityManager);
 
         return new JsonResponse([
             'status' => StatusEnum::SUCCESS->value,
             'message' => 'Product successfully created',
             'data' => json_decode($response),
         ], Response::HTTP_CREATED);
+    }
+
+    /**
+     * @throws DateMalformedStringException|JWTDecodeFailureException
+     */
+    public function update(string $id, Request $request, ValidatorInterface $validator): Response
+    {
+        $response = $this->productService->update($id, $request, $validator, $this->serializer,
+            $this->entityManager);
+
+        return new JsonResponse([
+            'status' => StatusEnum::SUCCESS->value,
+            'message' => 'Product successfully updated',
+            'data' => json_decode($response),
+        ], Response::HTTP_OK);
     }
 }

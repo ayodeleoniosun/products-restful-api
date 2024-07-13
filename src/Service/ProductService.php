@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\Encoder\JWTEncoderInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\Exception\JWTDecodeFailureException;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use function Symfony\Component\Clock\now;
@@ -29,7 +30,7 @@ class ProductService
      * @throws DateMalformedStringException
      * @throws JWTDecodeFailureException
      */
-    public function create(
+    public function store(
         Request $request,
         ValidatorInterface $validator,
         SerializerInterface $serializer,
@@ -55,7 +56,7 @@ class ProductService
 
         $product->user = $user;
 
-        $this->productRepository->create($entityManager, $product);
+        $this->productRepository->createOrUpdate($entityManager, $product);
 
         return $serializer->serialize($product, 'json');
     }
@@ -86,5 +87,45 @@ class ProductService
         }
 
         throw new CustomException($errors[0]->getMessage());
+    }
+
+    /**
+     * @throws DateMalformedStringException
+     * @throws JWTDecodeFailureException
+     */
+    public function update(
+        string $id,
+        Request $request,
+        ValidatorInterface $validator,
+        SerializerInterface $serializer,
+        EntityManagerInterface $entityManager,
+    ): string {
+        $token = $this->decodeToken($request);
+        $user = $this->userRepository->find($token['user_id']);
+
+        $getProduct = $this->productRepository->findOneBy(compact('id', 'user'));
+
+        if (!$getProduct) {
+            throw new CustomException('Product not found', Response::HTTP_NOT_FOUND);
+        }
+
+        $product = $this->serializePayload($request, $serializer);
+        $getProduct->name = strtolower($product->name);
+        $getProduct->description = strtolower($product->description);
+
+        $this->validatePayload($validator, $getProduct);
+
+        $productExist = $this->productRepository->findOneNotById($id, ['name' => $getProduct->name]);
+
+        if ($productExist) {
+            throw new CustomException('Product already exist');
+        }
+
+        $getProduct->updatedAt = now();
+        $getProduct->id = $id;
+
+        $this->productRepository->createOrUpdate($entityManager, $getProduct, 'update');
+
+        return $serializer->serialize($getProduct, 'json');
     }
 }

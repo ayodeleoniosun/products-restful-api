@@ -10,5 +10,10 @@ login:
 
 create_product:
   path: /api/products
-  controller: App\Controller\ProductController::create
+  controller: App\Controller\ProductController::store
   methods: POST
+
+update_product:
+  path: /api/products/{id}
+  controller: App\Controller\ProductController::update
+  methods: PUT
