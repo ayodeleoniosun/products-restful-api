@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
 class Product
 {
     #[ORM\Column(length: 255)]
-    public string $name;
+    public ?string $name = null;
 
     #[ORM\Column]
     public DateTimeImmutable $createdAt;
@@ -25,7 +25,7 @@ class Product
     #[ORM\JoinColumn(nullable: false)]
     public ?User $user = null;
     #[ORM\Column(length: 255)]
-    public string $description;
+    public ?string $description = null;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -33,7 +33,7 @@ class Product
     #[ORM\Column(nullable: true)]
     public ?DateTimeImmutable $deletedAt = null;
     #[ORM\Column]
-    private int $price;
+    private ?int $price = null;
 
     public static function loadValidatorMetadata(ClassMetadata $metadata): void
     {

@@ -39,6 +39,7 @@ class ProductRepository extends ServiceEntityRepository implements ServiceEntity
     public function findRecordBy(array $criteria, ?array $orderBy = null): object|null
     {
         $criteria['deletedAt'] = null;
+
         return $this->findOneBy($criteria, $orderBy);
     }
 
@@ -59,9 +60,7 @@ class ProductRepository extends ServiceEntityRepository implements ServiceEntity
     {
         $query = $this->createQueryBuilder('p')
             ->andWhere('p.id != :id')
-            ->setParameter('id', $id)
-            ->andWhere('p.deletedAt = :deleted_at')
-            ->setParameter('deleted_at', null);
+            ->setParameter('id', $id);
 
         foreach ($values as $column => $value) {
             $query->andWhere("p.$column = :$column")

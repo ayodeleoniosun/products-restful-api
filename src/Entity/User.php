@@ -46,7 +46,7 @@ class User implements PasswordAuthenticatedUserInterface, UserInterface
      * @ORM\OneToMany(targetEntity=Product::class, mappedBy="user")
      */
 
-    private ArrayCollection $products;
+    private Collection $products;
 
     public function __construct()
     {

@@ -14,7 +14,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-
 use function Symfony\Component\Clock\now;
 
 class ProductService
@@ -136,7 +135,7 @@ class ProductService
 
         $this->validatePayload($validator, $getProduct);
 
-        $productExist = $this->productRepository->findOneNotById($id, ['name' => $getProduct->name]);
+        $productExist = $this->productRepository->findOneNotById($id, ['name' => $getProduct->name, 'user' => $user]);
 
         if ($productExist) {
             throw new CustomException('Product already exist');

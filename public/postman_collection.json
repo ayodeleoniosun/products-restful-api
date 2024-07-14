@@ -30,17 +30,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://0.0.0.0:8091/api/auth/register",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/auth/register",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"{{baseUrl}}"
 							],
-							"port": "8091",
 							"path": [
-								"api",
 								"auth",
 								"register"
 							]
@@ -48,231 +42,13 @@
 					},
 					"response": [
 						{
-							"name": "Payload Validation Response",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"lastname\": \"Doe\",\n    \"password\": \"johndoe@2024\",\n    \"email\": \"ayodeleoniosun6@gmail.com\",\n    \"password_confirmation\": \"johndoe@2024\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/auth/register",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"auth",
-										"register"
-									]
-								}
-							},
-							"status": "Unprocessable Entity",
-							"code": 422,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "Content-Security-Policy",
-									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
-								},
-								{
-									"key": "Cross-Origin-Opener-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Cross-Origin-Resource-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Origin-Agent-Cluster",
-									"value": "?1"
-								},
-								{
-									"key": "Referrer-Policy",
-									"value": "no-referrer"
-								},
-								{
-									"key": "Strict-Transport-Security",
-									"value": "max-age=15552000; includeSubDomains"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-DNS-Prefetch-Control",
-									"value": "off"
-								},
-								{
-									"key": "X-Download-Options",
-									"value": "noopen"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "SAMEORIGIN"
-								},
-								{
-									"key": "X-Permitted-Cross-Domain-Policies",
-									"value": "none"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "0"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "64"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"40-1W/BdL7pbyrgE9boZjnyEb2Dr8M\""
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 20 May 2024 16:34:45 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Firstname is required\",\n    \"data\": null\n}"
-						},
-						{
-							"name": "User Exist Response",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"firstname\": \"John\",\n    \"lastname\": \"Doe\",\n    \"password\": \"johndoe@2024\",\n    \"email\": \"ayodeleoniosun64@gmail.com\",\n    \"password_confirmation\": \"johndoe@2024\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/auth/register",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"auth",
-										"register"
-									]
-								}
-							},
-							"status": "Bad Request",
-							"code": 400,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "Content-Security-Policy",
-									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
-								},
-								{
-									"key": "Cross-Origin-Opener-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Cross-Origin-Resource-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Origin-Agent-Cluster",
-									"value": "?1"
-								},
-								{
-									"key": "Referrer-Policy",
-									"value": "no-referrer"
-								},
-								{
-									"key": "Strict-Transport-Security",
-									"value": "max-age=15552000; includeSubDomains"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-DNS-Prefetch-Control",
-									"value": "off"
-								},
-								{
-									"key": "X-Download-Options",
-									"value": "noopen"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "SAMEORIGIN"
-								},
-								{
-									"key": "X-Permitted-Cross-Domain-Policies",
-									"value": "none"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "0"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "80"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"50-mFuknNV3KDs0uQVh1S2xDhu/ILw\""
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 20 May 2024 16:33:00 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Email already in use by another user.\",\n    \"data\": null\n}"
-						},
-						{
 							"name": "Successful Response",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"firstname\": \"John\",\n    \"lastname\": \"Doe\",\n    \"password\": \"johndoe@2024\",\n    \"email\": \"ayodeleoniosun64_new_old@gmail.com\",\n    \"password_confirmation\": \"johndoe@2024\"\n}",
+									"raw": "{\n    \"firstname\": \"ayodele\",\n    \"lastname\": \"oniosun\",\n    \"email\": \"ayodeleoniosun63@gmail.com\",\n    \"password\": \"Ayodele@2024\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -295,93 +71,53 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "Content-Security-Policy",
-									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
-								},
-								{
-									"key": "Cross-Origin-Opener-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Cross-Origin-Resource-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Origin-Agent-Cluster",
-									"value": "?1"
-								},
-								{
-									"key": "Referrer-Policy",
-									"value": "no-referrer"
-								},
-								{
-									"key": "Strict-Transport-Security",
-									"value": "max-age=15552000; includeSubDomains"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-DNS-Prefetch-Control",
-									"value": "off"
-								},
-								{
-									"key": "X-Download-Options",
-									"value": "noopen"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "SAMEORIGIN"
-								},
-								{
-									"key": "X-Permitted-Cross-Domain-Policies",
-									"value": "none"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "0"
+									"key": "Cache-Control",
+									"value": "no-cache, private"
 								},
 								{
 									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "236"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"ec-SWTDN/KVVC1iobiO7vaW4WaORGM\""
+									"value": "application/json"
 								},
 								{
 									"key": "Date",
-									"value": "Mon, 20 May 2024 16:31:52 GMT"
+									"value": "Sun, 14 Jul 2024 13:25:55 GMT"
 								},
 								{
-									"key": "Connection",
-									"value": "keep-alive"
+									"key": "Set-Cookie",
+									"value": "sf_redirect=%7B%22token%22%3A%222cdc08%22%2C%22route%22%3A%22register%22%2C%22method%22%3A%22POST%22%2C%22controller%22%3A%7B%22class%22%3A%22App%5C%5CController%5C%5CAuthController%22%2C%22method%22%3A%22register%22%2C%22file%22%3A%22%5C%2FUsers%5C%2Fayodele%5C%2FDocuments%5C%2FWorkspace%5C%2Fprojects%5C%2FPHP%5C%2Fsymfony%5C%2Fproduct-restful-api%5C%2Fsrc%5C%2FController%5C%2FAuthController.php%22%2C%22line%22%3A45%7D%2C%22status_code%22%3A201%2C%22status_text%22%3A%22Created%22%7D; path=/; httponly; samesite=lax"
 								},
 								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
+									"key": "X-Debug-Token",
+									"value": "2cdc08"
+								},
+								{
+									"key": "X-Debug-Token-Link",
+									"value": "http://localhost:8000/_profiler/2cdc08"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.20"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "374"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Registration successful. You can login now\",\n    \"data\": {\n        \"id\": \"664b7af8b623d27d40812a15\",\n        \"firstname\": \"John\",\n        \"lastname\": \"Doe\",\n        \"email\": \"ayodeleoniosun64_new_old@gmail.com\",\n        \"createdAt\": \"2024-05-20T16:31:52.174Z\"\n    }\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"User successfully registered\",\n    \"data\": {\n        \"id\": 24,\n        \"firstname\": \"ayodele\",\n        \"lastname\": \"oniosun\",\n        \"email\": \"ayodeleoniosun63@gmail.com\",\n        \"password\": \"$2y$13$sw72ikNqZaSdqPUtW4vEHuflN35dyvD3kpxDzC783ndGiULGmaNSi\",\n        \"createdAt\": \"2024-07-14T13:25:55+00:00\",\n        \"updatedAt\": \"2024-07-14T13:25:55+00:00\",\n        \"deletedAt\": null,\n        \"products\": [],\n        \"roles\": [],\n        \"userIdentifier\": \"\"\n    }\n}"
 						},
 						{
-							"name": "Password Not Match Response",
+							"name": "User Exist Response",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"firstname\": \"John\",\n    \"lastname\": \"Doe\",\n    \"password\": \"johndo@2024\",\n    \"email\": \"ayodeleoniosun64@gmail.com\",\n    \"password_confirmation\": \"johndoe@2024\"\n}",
+									"raw": "{\n    \"firstname\": \"ayodele\",\n    \"lastname\": \"oniosun\",\n    \"email\": \"ayodeleoniosun63@gmail.com\",\n    \"password\": \"Ayodele@2024\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -399,89 +135,114 @@
 									]
 								}
 							},
-							"status": "Unprocessable Entity",
-							"code": 422,
+							"status": "Bad Request",
+							"code": 400,
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "Content-Security-Policy",
-									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
-								},
-								{
-									"key": "Cross-Origin-Opener-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Cross-Origin-Resource-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Origin-Agent-Cluster",
-									"value": "?1"
-								},
-								{
-									"key": "Referrer-Policy",
-									"value": "no-referrer"
-								},
-								{
-									"key": "Strict-Transport-Security",
-									"value": "max-age=15552000; includeSubDomains"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-DNS-Prefetch-Control",
-									"value": "off"
-								},
-								{
-									"key": "X-Download-Options",
-									"value": "noopen"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "SAMEORIGIN"
-								},
-								{
-									"key": "X-Permitted-Cross-Domain-Policies",
-									"value": "none"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "0"
+									"key": "Cache-Control",
+									"value": "no-cache, private"
 								},
 								{
 									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "65"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"41-OJhyPgDKFJZWWGuHRnlmIWZIDK8\""
+									"value": "application/json"
 								},
 								{
 									"key": "Date",
-									"value": "Mon, 20 May 2024 16:35:27 GMT"
+									"value": "Sun, 14 Jul 2024 13:27:56 GMT"
 								},
 								{
-									"key": "Connection",
-									"value": "keep-alive"
+									"key": "Set-Cookie",
+									"value": "sf_redirect=deleted; expires=Sat, 15 Jul 2023 13:27:55 GMT; Max-Age=0; path=/; httponly"
 								},
 								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
+									"key": "X-Debug-Token",
+									"value": "b47930"
+								},
+								{
+									"key": "X-Debug-Token-Link",
+									"value": "http://localhost:8000/_profiler/b47930"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.20"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "49"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Passwords do not match\",\n    \"data\": null\n}"
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"User already exist\"\n}"
+						},
+						{
+							"name": "Payload Validation Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"lastname\": \"oniosun\",\n    \"email\": \"ayodeleoniosun63@gmail.com\",\n    \"password\": \"Ayodele@2024\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Jul 2024 13:33:08 GMT"
+								},
+								{
+									"key": "X-Debug-Token",
+									"value": "fd6979"
+								},
+								{
+									"key": "X-Debug-Token-Link",
+									"value": "http://localhost:8000/_profiler/fd6979"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.20"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "57"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Firstname cannot be blank.\"\n}"
 						}
 					]
 				},
@@ -512,13 +273,78 @@
 					},
 					"response": [
 						{
+							"name": "Login Successful Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"ayodeleoniosun63@gmail.com\",\n    \"password\": \"Ayodele@2024\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Jul 2024 13:36:35 GMT"
+								},
+								{
+									"key": "X-Debug-Token",
+									"value": "6aad67"
+								},
+								{
+									"key": "X-Debug-Token-Link",
+									"value": "http://localhost:8000/_profiler/6aad67"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.20"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "572"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Login successful\",\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MjA5NjQxOTUsImV4cCI6MTcyMTA1MDU5NSwicm9sZXMiOltdLCJ1c2VybmFtZSI6ImF5b2RlbGVvbmlvc3VuNjNAZ21haWwuY29tIiwidXNlcl9pZCI6MjR9.KqT1SBHWrXSMNfPUXGASI76wov-9I2nUW2NbFQJ65NE2fcnhruKXD9qQdxViCo6wj8jrnNa4_QAzke9zQZA56nBw8vgb9MFsBzz-5zP27xIyMTne8iPxbqzyrAHXJyzoSahkEbX8tJAbUz9PTZj4ryZYWVYHzims5n2OJ891dCG9sggjdoUY3BMI4LUvM3socTJn3NeMEcDA4bwj2zhUf-YBVn3K6C1yxNAJTTl24VIVH8kuV1BI5NcpWaSBCwii1rDV7o9HBE-gJoKLfYLQBoXO5DsWhpjGjzPJDVjJH69aTUq4wHA1-WMPC13aHgtiTMTblzB5Vhb0iOokgGvLHA\"\n}"
+						},
+						{
 							"name": "Incorrect Login Credentials Response",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"email\": \"ayodeleoniosun64@gmail.com\",\n    \"password\": \"Ayodele@2024\"\n}",
+									"raw": "{\n    \"username\": \"ayodeleoniosun63@gmail.com\",\n    \"password\": \"Ayodele@2023\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -541,193 +367,40 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "Content-Security-Policy",
-									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
-								},
-								{
-									"key": "Cross-Origin-Opener-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Cross-Origin-Resource-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Origin-Agent-Cluster",
-									"value": "?1"
-								},
-								{
-									"key": "Referrer-Policy",
-									"value": "no-referrer"
-								},
-								{
-									"key": "Strict-Transport-Security",
-									"value": "max-age=15552000; includeSubDomains"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-DNS-Prefetch-Control",
-									"value": "off"
-								},
-								{
-									"key": "X-Download-Options",
-									"value": "noopen"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "SAMEORIGIN"
-								},
-								{
-									"key": "X-Permitted-Cross-Domain-Policies",
-									"value": "none"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "0"
+									"key": "Cache-Control",
+									"value": "no-cache, private"
 								},
 								{
 									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "67"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"43-O/OizdXe+iILJYjrDbCf41vU6Yg\""
+									"value": "application/json"
 								},
 								{
 									"key": "Date",
-									"value": "Mon, 20 May 2024 16:35:56 GMT"
+									"value": "Sun, 14 Jul 2024 13:38:03 GMT"
 								},
 								{
-									"key": "Connection",
-									"value": "keep-alive"
+									"key": "X-Debug-Token",
+									"value": "ba85eb"
 								},
 								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Incorrect login details.\",\n    \"data\": null\n}"
-						},
-						{
-							"name": "Login Successful Response",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"email\": \"ayodeleoniosun64@gmail.com\",\n    \"password\": \"johndoe@2024\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/auth/login",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"auth",
-										"login"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
+									"key": "X-Debug-Token-Link",
+									"value": "http://localhost:8000/_profiler/ba85eb"
 								},
 								{
-									"key": "Content-Security-Policy",
-									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.20"
 								},
 								{
-									"key": "Cross-Origin-Opener-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Cross-Origin-Resource-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Origin-Agent-Cluster",
-									"value": "?1"
-								},
-								{
-									"key": "Referrer-Policy",
-									"value": "no-referrer"
-								},
-								{
-									"key": "Strict-Transport-Security",
-									"value": "max-age=15552000; includeSubDomains"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-DNS-Prefetch-Control",
-									"value": "off"
-								},
-								{
-									"key": "X-Download-Options",
-									"value": "noopen"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "SAMEORIGIN"
-								},
-								{
-									"key": "X-Permitted-Cross-Domain-Policies",
-									"value": "none"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "0"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
+									"key": "X-Robots-Tag",
+									"value": "noindex"
 								},
 								{
 									"key": "Content-Length",
-									"value": "443"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"1bb-TRIXXIBIuVHpnHjBzSSkmXuIeeM\""
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 20 May 2024 16:37:33 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
+									"value": "56"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Login successful.\",\n    \"data\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NGIxM2VkZTU4NTk5ZmRmMTgwY2E1ZSIsImVtYWlsIjoiYXlvZGVsZW9uaW9zdW42NEBnbWFpbC5jb20iLCJpYXQiOjE3MTYyMjMwNTMsImV4cCI6MTcxNjMwOTQ1M30.ztgqO0HcqLLeLo3FbWxsRxycWSkcGm3AdFFs5qyFU58\",\n        \"user\": {\n            \"id\": \"664b13ede58599fdf180ca5e\",\n            \"firstname\": \"John\",\n            \"lastname\": \"Doe\",\n            \"email\": \"ayodeleoniosun64@gmail.com\",\n            \"createdAt\": \"2024-05-20T09:12:13.081Z\"\n        }\n    }\n}"
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Invalid login credentials\"\n}"
 						}
 					]
 				}
@@ -747,13 +420,12 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/products/all",
+							"raw": "{{baseUrl}}/products",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"products",
-								"all"
+								"products"
 							]
 						}
 					},
@@ -769,13 +441,12 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/products/all",
+									"raw": "{{baseUrl}}/products",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
-										"products",
-										"all"
+										"products"
 									]
 								}
 							},
@@ -784,84 +455,40 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "Content-Security-Policy",
-									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
-								},
-								{
-									"key": "Cross-Origin-Opener-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Cross-Origin-Resource-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Origin-Agent-Cluster",
-									"value": "?1"
-								},
-								{
-									"key": "Referrer-Policy",
-									"value": "no-referrer"
-								},
-								{
-									"key": "Strict-Transport-Security",
-									"value": "max-age=15552000; includeSubDomains"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-DNS-Prefetch-Control",
-									"value": "off"
-								},
-								{
-									"key": "X-Download-Options",
-									"value": "noopen"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "SAMEORIGIN"
-								},
-								{
-									"key": "X-Permitted-Cross-Domain-Policies",
-									"value": "none"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "0"
+									"key": "Cache-Control",
+									"value": "no-cache, private"
 								},
 								{
 									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "4241"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"1091-nwDNFDx5DKw4Jceh5NubLLE6PJ0\""
+									"value": "application/json"
 								},
 								{
 									"key": "Date",
-									"value": "Mon, 20 May 2024 17:08:19 GMT"
+									"value": "Sun, 14 Jul 2024 13:38:52 GMT"
 								},
 								{
-									"key": "Connection",
-									"value": "keep-alive"
+									"key": "X-Debug-Token",
+									"value": "3d9736"
 								},
 								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
+									"key": "X-Debug-Token-Link",
+									"value": "http://localhost:8000/_profiler/3d9736"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.20"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Products successfully retrieved\",\n    \"data\": [\n        {\n            \"id\": \"664b7f49de21a9cb15c2be31\",\n            \"name\": \"Product 1111\",\n            \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health\",\n            \"price\": \"300,000.00\",\n            \"createdAt\": \"2024-05-20T16:50:17.780Z\"\n        },\n        {\n            \"id\": \"664b7f03de21a9cb15c2be2d\",\n            \"name\": \"Product 11k\",\n            \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health\",\n            \"price\": \"300,000.00\",\n            \"createdAt\": \"2024-05-20T16:49:07.411Z\"\n        },\n        {\n            \"id\": \"664b7ed33dd21f2bac2da3f1\",\n            \"name\": \"Product 1k\",\n            \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health\",\n            \"price\": \"300,000.00\",\n            \"createdAt\": \"2024-05-20T16:48:19.469Z\"\n        },\n        {\n            \"id\": \"664b7e6b60ee2980501be07a\",\n            \"name\": \"Product 1yyxx\",\n            \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health\",\n            \"price\": \"300,000.00\",\n            \"createdAt\": \"2024-05-20T16:46:35.166Z\"\n        },\n        {\n            \"id\": \"664b7d86f1ad2d9a8e7bcead\",\n            \"name\": \"Product 1yy\",\n            \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health\",\n            \"price\": \"300,000.00\",\n            \"createdAt\": \"2024-05-20T16:42:46.815Z\"\n        },\n        {\n            \"id\": \"664b7000cc83807b837e3e86\",\n            \"name\": \"Product 12\",\n            \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health\",\n            \"price\": \"300,000.00\",\n            \"createdAt\": \"2024-05-20T15:45:04.909Z\"\n        },\n        {\n            \"id\": \"664b6fefcc83807b837e3e82\",\n            \"name\": \"Product 1\",\n            \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health\",\n            \"price\": \"300,000.00\",\n            \"createdAt\": \"2024-05-20T15:44:47.666Z\"\n        },\n        {\n            \"id\": \"664b6ed8d7707810ea19d30e\",\n            \"name\": \"Product 1\",\n            \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health\",\n            \"price\": \"300,000.00\",\n            \"createdAt\": \"2024-05-20T15:40:08.722Z\"\n        },\n        {\n            \"id\": \"664a6c3c4d85735ec2e9e0e3\",\n            \"name\": \"Product 12\",\n            \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health.\",\n            \"price\": \"35,000.00\",\n            \"createdAt\": \"2024-05-19T21:16:44.851Z\"\n        },\n        {\n            \"id\": \"664a6c334d85735ec2e9e0e0\",\n            \"name\": \"Product 10\",\n            \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health\",\n            \"price\": \"3.00\",\n            \"createdAt\": \"2024-05-19T21:16:35.871Z\"\n        },\n        {\n            \"id\": \"6648be8e0cb97219b5c5ddf1\",\n            \"name\": \"Product 10\",\n            \"description\": \"This is a new product. It is very great for usage and beneficial to health\",\n            \"price\": \"3.00\",\n            \"createdAt\": \"2024-05-18T14:43:26.000Z\"\n        },\n        {\n            \"id\": \"66488783556409092df381c3\",\n            \"name\": \"Product 1\",\n            \"description\": \"This is a new product. It is very great for usage and beneficial to health\",\n            \"price\": \"3.00\",\n            \"createdAt\": \"2024-05-18T10:48:35.000Z\"\n        },\n        {\n            \"id\": \"6648871ffe6af16d30ee230d\",\n            \"name\": \"xxxxxxxxx\",\n            \"description\": \"This is a new product. It is very great for usage and beneficial to health\",\n            \"price\": \"3.00\",\n            \"createdAt\": \"2024-05-18T10:46:55.000Z\"\n        },\n        {\n            \"id\": \"664886eb4804009924013f94\",\n            \"name\": \"Product 45\",\n            \"description\": \"This is a new product. It is very great for usage and beneficial to health\",\n            \"price\": \"3.00\",\n            \"createdAt\": \"2024-05-18T10:46:03.000Z\"\n        },\n        {\n            \"id\": \"66487427c71a0ab3c01c8b6a\",\n            \"name\": \"Product 45\",\n            \"description\": \"This is a new product. It is very great for usage and beneficial to health\",\n            \"price\": \"3.00\",\n            \"createdAt\": \"2024-05-18T09:25:59.000Z\"\n        },\n        {\n            \"id\": \"664869e1f57eb0f3f3ede7f6\",\n            \"name\": \"Product 4\",\n            \"description\": \"This is a new product. It is very great for usage and beneficial to health\",\n            \"price\": \"3.00\",\n            \"createdAt\": \"2024-05-18T08:42:09.000Z\"\n        },\n        {\n            \"id\": \"66485a42845751f463eb2e08\",\n            \"name\": \"Product 2\",\n            \"description\": \"This is a new product. It is very great for usage and beneficial to health\",\n            \"price\": \"3.00\",\n            \"createdAt\": \"2024-05-18T07:35:30.000Z\"\n        },\n        {\n            \"id\": \"66485a1c7c0def0ce0f346f7\",\n            \"name\": \"Product 455\",\n            \"description\": \"This is a new product. It is very great for usage and beneficial to health\",\n            \"price\": \"3.00\",\n            \"createdAt\": \"2024-05-18T07:34:52.000Z\"\n        }\n    ]\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"All products retrieved\",\n    \"data\": [\n        {\n            \"id\": 34,\n            \"user\": {\n                \"id\": 11,\n                \"firstname\": \"ssss\",\n                \"lastname\": \"Doe\",\n                \"email\": \"ayodele@gmail.com\",\n                \"password\": \"$2y$13$P2/Hy3OsyKzR4NhsB9LlLu/DpY4j54tXd9ftDlfvYa7jqVbG9Il16\",\n                \"createdAt\": \"2024-07-12T13:27:54+00:00\",\n                \"updatedAt\": \"2024-07-12T13:27:54+00:00\",\n                \"deletedAt\": null,\n                \"roles\": [],\n                \"userIdentifier\": \"\"\n            },\n            \"name\": \"product 144\",\n            \"description\": \"this is a new product. it is very great for usage and beneficial to health. it is very great for usage and beneficial to health\",\n            \"price\": 250000,\n            \"createdAt\": \"2024-07-13T13:36:47+00:00\",\n            \"updatedAt\": \"2024-07-13T13:36:47+00:00\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": 31,\n            \"user\": {\n                \"id\": 11,\n                \"firstname\": \"ssss\",\n                \"lastname\": \"Doe\",\n                \"email\": \"ayodele@gmail.com\",\n                \"password\": \"$2y$13$P2/Hy3OsyKzR4NhsB9LlLu/DpY4j54tXd9ftDlfvYa7jqVbG9Il16\",\n                \"createdAt\": \"2024-07-12T13:27:54+00:00\",\n                \"updatedAt\": \"2024-07-12T13:27:54+00:00\",\n                \"deletedAt\": null,\n                \"roles\": [],\n                \"userIdentifier\": \"\"\n            },\n            \"name\": \"product helloxx\",\n            \"description\": \"this is a new product. it is very great for usage and beneficial to health. it is very great for usage and beneficial to health.\",\n            \"price\": 37000,\n            \"createdAt\": \"2024-07-12T19:41:06+00:00\",\n            \"updatedAt\": \"2024-07-13T12:12:13+00:00\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": 30,\n            \"user\": {\n                \"id\": 11,\n                \"firstname\": \"ssss\",\n                \"lastname\": \"Doe\",\n                \"email\": \"ayodele@gmail.com\",\n                \"password\": \"$2y$13$P2/Hy3OsyKzR4NhsB9LlLu/DpY4j54tXd9ftDlfvYa7jqVbG9Il16\",\n                \"createdAt\": \"2024-07-12T13:27:54+00:00\",\n                \"updatedAt\": \"2024-07-12T13:27:54+00:00\",\n                \"deletedAt\": null,\n                \"roles\": [],\n                \"userIdentifier\": \"\"\n            },\n            \"name\": \"product 111xssxopp\",\n            \"description\": \"this is a new product. it is very great for usage and beneficial to health. it is very great for usage and beneficial to health.\",\n            \"price\": 35000,\n            \"createdAt\": \"2024-07-13T11:53:57+00:00\",\n            \"updatedAt\": \"2024-07-13T11:53:57+00:00\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": 29,\n            \"user\": {\n                \"id\": 11,\n                \"firstname\": \"ssss\",\n                \"lastname\": \"Doe\",\n                \"email\": \"ayodele@gmail.com\",\n                \"password\": \"$2y$13$P2/Hy3OsyKzR4NhsB9LlLu/DpY4j54tXd9ftDlfvYa7jqVbG9Il16\",\n                \"createdAt\": \"2024-07-12T13:27:54+00:00\",\n                \"updatedAt\": \"2024-07-12T13:27:54+00:00\",\n                \"deletedAt\": null,\n                \"roles\": [],\n                \"userIdentifier\": \"\"\n            },\n            \"name\": \"Product hello\",\n            \"description\": \"this is a new product. it is very great for usage and beneficial to health. it is very great for usage and beneficial to health\",\n            \"price\": 250000,\n            \"createdAt\": \"2024-07-13T11:45:16+00:00\",\n            \"updatedAt\": \"2024-07-13T11:45:16+00:00\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": 28,\n            \"user\": {\n                \"id\": 1,\n                \"firstname\": \"ssss\",\n                \"lastname\": \"Doe\",\n                \"email\": \"ssaaa@gmail.com\",\n                \"password\": \"$2y$13$kU.GF6995ITC1p.w1ZJJ7eueUIQnews2Hz94aZ5wqbjXBV19OX3l.\",\n                \"createdAt\": \"2024-07-12T10:38:11+00:00\",\n                \"updatedAt\": \"2024-07-12T10:38:11+00:00\",\n                \"deletedAt\": null,\n                \"roles\": [],\n                \"userIdentifier\": \"\"\n            },\n            \"name\": \"pproduct 2\",\n            \"description\": \"this is a new product. it is very great for usage and beneficial to health. it is very great for usage and beneficial to health\",\n            \"price\": 250000,\n            \"createdAt\": \"2024-07-12T19:47:02+00:00\",\n            \"updatedAt\": \"2024-07-12T19:47:02+00:00\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": 27,\n            \"user\": {\n                \"id\": 1,\n                \"firstname\": \"ssss\",\n                \"lastname\": \"Doe\",\n                \"email\": \"ssaaa@gmail.com\",\n                \"password\": \"$2y$13$kU.GF6995ITC1p.w1ZJJ7eueUIQnews2Hz94aZ5wqbjXBV19OX3l.\",\n                \"createdAt\": \"2024-07-12T10:38:11+00:00\",\n                \"updatedAt\": \"2024-07-12T10:38:11+00:00\",\n                \"deletedAt\": null,\n                \"roles\": [],\n                \"userIdentifier\": \"\"\n            },\n            \"name\": \"Product 2\",\n            \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health\",\n            \"price\": 250000,\n            \"createdAt\": \"2024-07-12T19:45:30+00:00\",\n            \"updatedAt\": \"2024-07-12T19:45:30+00:00\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": 26,\n            \"user\": {\n                \"id\": 1,\n                \"firstname\": \"ssss\",\n                \"lastname\": \"Doe\",\n                \"email\": \"ssaaa@gmail.com\",\n                \"password\": \"$2y$13$kU.GF6995ITC1p.w1ZJJ7eueUIQnews2Hz94aZ5wqbjXBV19OX3l.\",\n                \"createdAt\": \"2024-07-12T10:38:11+00:00\",\n                \"updatedAt\": \"2024-07-12T10:38:11+00:00\",\n                \"deletedAt\": null,\n                \"roles\": [],\n                \"userIdentifier\": \"\"\n            },\n            \"name\": \"Product 1\",\n            \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health\",\n            \"price\": 250000,\n            \"createdAt\": \"2024-07-12T19:44:23+00:00\",\n            \"updatedAt\": \"2024-07-12T19:44:23+00:00\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": 25,\n            \"user\": {\n                \"id\": 1,\n                \"firstname\": \"ssss\",\n                \"lastname\": \"Doe\",\n                \"email\": \"ssaaa@gmail.com\",\n                \"password\": \"$2y$13$kU.GF6995ITC1p.w1ZJJ7eueUIQnews2Hz94aZ5wqbjXBV19OX3l.\",\n                \"createdAt\": \"2024-07-12T10:38:11+00:00\",\n                \"updatedAt\": \"2024-07-12T10:38:11+00:00\",\n                \"deletedAt\": null,\n                \"roles\": [],\n                \"userIdentifier\": \"\"\n            },\n            \"name\": \"Product 1\",\n            \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health\",\n            \"price\": 250000,\n            \"createdAt\": \"2024-07-12T19:42:40+00:00\",\n            \"updatedAt\": \"2024-07-12T19:42:40+00:00\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": 24,\n            \"user\": {\n                \"id\": 1,\n                \"firstname\": \"ssss\",\n                \"lastname\": \"Doe\",\n                \"email\": \"ssaaa@gmail.com\",\n                \"password\": \"$2y$13$kU.GF6995ITC1p.w1ZJJ7eueUIQnews2Hz94aZ5wqbjXBV19OX3l.\",\n                \"createdAt\": \"2024-07-12T10:38:11+00:00\",\n                \"updatedAt\": \"2024-07-12T10:38:11+00:00\",\n                \"deletedAt\": null,\n                \"roles\": [],\n                \"userIdentifier\": \"\"\n            },\n            \"name\": \"Product 1\",\n            \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health\",\n            \"price\": 250000,\n            \"createdAt\": \"2024-07-12T19:42:18+00:00\",\n            \"updatedAt\": \"2024-07-12T19:42:18+00:00\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": 23,\n            \"user\": {\n                \"id\": 1,\n                \"firstname\": \"ssss\",\n                \"lastname\": \"Doe\",\n                \"email\": \"ssaaa@gmail.com\",\n                \"password\": \"$2y$13$kU.GF6995ITC1p.w1ZJJ7eueUIQnews2Hz94aZ5wqbjXBV19OX3l.\",\n                \"createdAt\": \"2024-07-12T10:38:11+00:00\",\n                \"updatedAt\": \"2024-07-12T10:38:11+00:00\",\n                \"deletedAt\": null,\n                \"roles\": [],\n                \"userIdentifier\": \"\"\n            },\n            \"name\": \"Product 1\",\n            \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health\",\n            \"price\": 250000,\n            \"createdAt\": \"2024-07-12T19:42:12+00:00\",\n            \"updatedAt\": \"2024-07-12T19:42:12+00:00\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": 22,\n            \"user\": {\n                \"id\": 1,\n                \"firstname\": \"ssss\",\n                \"lastname\": \"Doe\",\n                \"email\": \"ssaaa@gmail.com\",\n                \"password\": \"$2y$13$kU.GF6995ITC1p.w1ZJJ7eueUIQnews2Hz94aZ5wqbjXBV19OX3l.\",\n                \"createdAt\": \"2024-07-12T10:38:11+00:00\",\n                \"updatedAt\": \"2024-07-12T10:38:11+00:00\",\n                \"deletedAt\": null,\n                \"roles\": [],\n                \"userIdentifier\": \"\"\n            },\n            \"name\": \"Product 1\",\n            \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health\",\n            \"price\": 250000,\n            \"createdAt\": \"2024-07-12T19:42:00+00:00\",\n            \"updatedAt\": \"2024-07-12T19:42:00+00:00\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": 21,\n            \"user\": {\n                \"id\": 1,\n                \"firstname\": \"ssss\",\n                \"lastname\": \"Doe\",\n                \"email\": \"ssaaa@gmail.com\",\n                \"password\": \"$2y$13$kU.GF6995ITC1p.w1ZJJ7eueUIQnews2Hz94aZ5wqbjXBV19OX3l.\",\n                \"createdAt\": \"2024-07-12T10:38:11+00:00\",\n                \"updatedAt\": \"2024-07-12T10:38:11+00:00\",\n                \"deletedAt\": null,\n                \"roles\": [],\n                \"userIdentifier\": \"\"\n            },\n            \"name\": \"Product 1\",\n            \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health\",\n            \"price\": 250000,\n            \"createdAt\": \"2024-07-12T19:41:48+00:00\",\n            \"updatedAt\": \"2024-07-12T19:41:48+00:00\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": 20,\n            \"user\": {\n                \"id\": 1,\n                \"firstname\": \"ssss\",\n                \"lastname\": \"Doe\",\n                \"email\": \"ssaaa@gmail.com\",\n                \"password\": \"$2y$13$kU.GF6995ITC1p.w1ZJJ7eueUIQnews2Hz94aZ5wqbjXBV19OX3l.\",\n                \"createdAt\": \"2024-07-12T10:38:11+00:00\",\n                \"updatedAt\": \"2024-07-12T10:38:11+00:00\",\n                \"deletedAt\": null,\n                \"roles\": [],\n                \"userIdentifier\": \"\"\n            },\n            \"name\": \"Product 1\",\n            \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health\",\n            \"price\": 250000,\n            \"createdAt\": \"2024-07-12T19:41:25+00:00\",\n            \"updatedAt\": \"2024-07-12T19:41:25+00:00\",\n            \"deletedAt\": null\n        }\n    ]\n}"
 						}
 					]
 				},
@@ -876,122 +503,17 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/products/667206b9440fbd2fc8122884",
+							"raw": "{{baseUrl}}/products/34",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"products",
-								"667206b9440fbd2fc8122884"
+								"34"
 							]
 						}
 					},
 					"response": [
-						{
-							"name": "Product Not Found Response",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{token}}"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/products/6648110f84b57ab108ca9ec8",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"products",
-										"6648110f84b57ab108ca9ec8"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "Content-Security-Policy",
-									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
-								},
-								{
-									"key": "Cross-Origin-Opener-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Cross-Origin-Resource-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Origin-Agent-Cluster",
-									"value": "?1"
-								},
-								{
-									"key": "Referrer-Policy",
-									"value": "no-referrer"
-								},
-								{
-									"key": "Strict-Transport-Security",
-									"value": "max-age=15552000; includeSubDomains"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-DNS-Prefetch-Control",
-									"value": "off"
-								},
-								{
-									"key": "X-Download-Options",
-									"value": "noopen"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "SAMEORIGIN"
-								},
-								{
-									"key": "X-Permitted-Cross-Domain-Policies",
-									"value": "none"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "0"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "61"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"3d-81THX+cIjTCIRk+o81cqhoZrpyo\""
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 20 May 2024 17:11:02 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Product not found.\",\n    \"data\": null\n}"
-						},
 						{
 							"name": "Product Retrieved Response",
 							"originalRequest": {
@@ -1003,13 +525,13 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/products/664a6c3c4d85735ec2e9e0e3",
+									"raw": "{{baseUrl}}/products/34",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"products",
-										"664a6c3c4d85735ec2e9e0e3"
+										"34"
 									]
 								}
 							},
@@ -1018,84 +540,101 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "Content-Security-Policy",
-									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
-								},
-								{
-									"key": "Cross-Origin-Opener-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Cross-Origin-Resource-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Origin-Agent-Cluster",
-									"value": "?1"
-								},
-								{
-									"key": "Referrer-Policy",
-									"value": "no-referrer"
-								},
-								{
-									"key": "Strict-Transport-Security",
-									"value": "max-age=15552000; includeSubDomains"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-DNS-Prefetch-Control",
-									"value": "off"
-								},
-								{
-									"key": "X-Download-Options",
-									"value": "noopen"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "SAMEORIGIN"
-								},
-								{
-									"key": "X-Permitted-Cross-Domain-Policies",
-									"value": "none"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "0"
+									"key": "Cache-Control",
+									"value": "no-cache, private"
 								},
 								{
 									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "328"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"148-GiH/TH/ZHKhp9uDGuBJOqLtNAu0\""
+									"value": "application/json"
 								},
 								{
 									"key": "Date",
-									"value": "Mon, 20 May 2024 17:14:35 GMT"
+									"value": "Sun, 14 Jul 2024 13:40:44 GMT"
 								},
 								{
-									"key": "Connection",
-									"value": "keep-alive"
+									"key": "X-Debug-Token",
+									"value": "7150b1"
 								},
 								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
+									"key": "X-Debug-Token-Link",
+									"value": "http://localhost:8000/_profiler/7150b1"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.20"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "637"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Product successfully retrieved\",\n    \"data\": {\n        \"id\": \"664a6c3c4d85735ec2e9e0e3\",\n        \"name\": \"Product 12\",\n        \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health.\",\n        \"price\": \"35,000.00\",\n        \"createdAt\": \"2024-05-19T21:16:44.851Z\"\n    }\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Product details retrieved\",\n    \"data\": {\n        \"id\": 34,\n        \"user\": {\n            \"id\": 11,\n            \"firstname\": \"ssss\",\n            \"lastname\": \"Doe\",\n            \"email\": \"ayodele@gmail.com\",\n            \"password\": \"$2y$13$P2/Hy3OsyKzR4NhsB9LlLu/DpY4j54tXd9ftDlfvYa7jqVbG9Il16\",\n            \"createdAt\": \"2024-07-12T13:27:54+00:00\",\n            \"updatedAt\": \"2024-07-12T13:27:54+00:00\",\n            \"deletedAt\": null,\n            \"roles\": [],\n            \"userIdentifier\": \"\"\n        },\n        \"name\": \"product 144\",\n        \"description\": \"this is a new product. it is very great for usage and beneficial to health. it is very great for usage and beneficial to health\",\n        \"price\": 250000,\n        \"createdAt\": \"2024-07-13T13:36:47+00:00\",\n        \"updatedAt\": \"2024-07-13T13:36:47+00:00\",\n        \"deletedAt\": null\n    }\n}"
+						},
+						{
+							"name": "Product Not Found Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/products/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products",
+										"1"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Jul 2024 13:41:17 GMT"
+								},
+								{
+									"key": "X-Debug-Token",
+									"value": "8c136d"
+								},
+								{
+									"key": "X-Debug-Token-Link",
+									"value": "http://localhost:8000/_profiler/8c136d"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.20"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Product not found\"\n}"
 						}
 					]
 				},
@@ -1111,7 +650,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Product 1\",\n    \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health\",\n    \"price\": 250000\n}",
+							"raw": "{\n    \"name\": \"product 144\",\n    \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health\",\n    \"price\": 250000\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1130,119 +669,6 @@
 					},
 					"response": [
 						{
-							"name": "Form Validation Response",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{token}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"description\": \"This is a new product. It is very great for usage and beneficial to health\",\n    \"price\": 3\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/products",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"products"
-									]
-								}
-							},
-							"status": "Unprocessable Entity",
-							"code": 422,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "Content-Security-Policy",
-									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
-								},
-								{
-									"key": "Cross-Origin-Opener-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Cross-Origin-Resource-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Origin-Agent-Cluster",
-									"value": "?1"
-								},
-								{
-									"key": "Referrer-Policy",
-									"value": "no-referrer"
-								},
-								{
-									"key": "Strict-Transport-Security",
-									"value": "max-age=15552000; includeSubDomains"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-DNS-Prefetch-Control",
-									"value": "off"
-								},
-								{
-									"key": "X-Download-Options",
-									"value": "noopen"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "SAMEORIGIN"
-								},
-								{
-									"key": "X-Permitted-Cross-Domain-Policies",
-									"value": "none"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "0"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "67"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"43-7RZI67SxYRGNRqjbTIhLrSnfeko\""
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 20 May 2024 16:37:57 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Product name is required\",\n    \"data\": null\n}"
-						},
-						{
 							"name": "Product Created Response",
 							"originalRequest": {
 								"method": "POST",
@@ -1254,7 +680,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"name\": \"Product 1111\",\n    \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health\",\n    \"price\": 300000\n}",
+									"raw": "{\n    \"name\": \"product 144\",\n    \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health\",\n    \"price\": 250000\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1276,84 +702,44 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "Content-Security-Policy",
-									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
-								},
-								{
-									"key": "Cross-Origin-Opener-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Cross-Origin-Resource-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Origin-Agent-Cluster",
-									"value": "?1"
-								},
-								{
-									"key": "Referrer-Policy",
-									"value": "no-referrer"
-								},
-								{
-									"key": "Strict-Transport-Security",
-									"value": "max-age=15552000; includeSubDomains"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-DNS-Prefetch-Control",
-									"value": "off"
-								},
-								{
-									"key": "X-Download-Options",
-									"value": "noopen"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "SAMEORIGIN"
-								},
-								{
-									"key": "X-Permitted-Cross-Domain-Policies",
-									"value": "none"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "0"
+									"key": "Cache-Control",
+									"value": "no-cache, private"
 								},
 								{
 									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "328"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"148-hcVKFJjU9xS8K6LPalzT4QilbYU\""
+									"value": "application/json"
 								},
 								{
 									"key": "Date",
-									"value": "Mon, 20 May 2024 16:50:17 GMT"
+									"value": "Sun, 14 Jul 2024 13:42:15 GMT"
 								},
 								{
-									"key": "Connection",
-									"value": "keep-alive"
+									"key": "Set-Cookie",
+									"value": "sf_redirect=%7B%22token%22%3A%22d1ec06%22%2C%22route%22%3A%22create_product%22%2C%22method%22%3A%22POST%22%2C%22controller%22%3A%7B%22class%22%3A%22App%5C%5CController%5C%5CProductController%22%2C%22method%22%3A%22store%22%2C%22file%22%3A%22%5C%2FUsers%5C%2Fayodele%5C%2FDocuments%5C%2FWorkspace%5C%2Fprojects%5C%2FPHP%5C%2Fsymfony%5C%2Fproduct-restful-api%5C%2Fsrc%5C%2FController%5C%2FProductController.php%22%2C%22line%22%3A88%7D%2C%22status_code%22%3A201%2C%22status_text%22%3A%22Created%22%7D; path=/; httponly; samesite=lax"
 								},
 								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
+									"key": "X-Debug-Token",
+									"value": "d1ec06"
+								},
+								{
+									"key": "X-Debug-Token-Link",
+									"value": "http://localhost:8000/_profiler/d1ec06"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.20"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "654"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Product successfully created\",\n    \"data\": {\n        \"id\": \"664b7f49de21a9cb15c2be31\",\n        \"name\": \"Product 1111\",\n        \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health\",\n        \"price\": \"300,000.00\",\n        \"createdAt\": \"2024-05-20T16:50:17.780Z\"\n    }\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Product successfully created\",\n    \"data\": {\n        \"id\": 35,\n        \"user\": {\n            \"id\": 24,\n            \"firstname\": \"ayodele\",\n            \"lastname\": \"oniosun\",\n            \"email\": \"ayodeleoniosun63@gmail.com\",\n            \"password\": \"$2y$13$sw72ikNqZaSdqPUtW4vEHuflN35dyvD3kpxDzC783ndGiULGmaNSi\",\n            \"createdAt\": \"2024-07-14T13:25:55+00:00\",\n            \"updatedAt\": \"2024-07-14T13:25:55+00:00\",\n            \"deletedAt\": null,\n            \"roles\": [],\n            \"userIdentifier\": \"\"\n        },\n        \"name\": \"product 144\",\n        \"description\": \"this is a new product. it is very great for usage and beneficial to health. it is very great for usage and beneficial to health\",\n        \"price\": 250000,\n        \"createdAt\": \"2024-07-14T13:42:15+00:00\",\n        \"updatedAt\": \"2024-07-14T13:42:15+00:00\",\n        \"deletedAt\": null\n    }\n}"
 						},
 						{
 							"name": "Product Already Added Response",
@@ -1367,7 +753,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"name\": \"Product 1\",\n    \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health\",\n    \"price\": 300000\n}",
+									"raw": "{\n    \"name\": \"product 144\",\n    \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health\",\n    \"price\": 250000\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1389,84 +775,113 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "Content-Security-Policy",
-									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
-								},
-								{
-									"key": "Cross-Origin-Opener-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Cross-Origin-Resource-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Origin-Agent-Cluster",
-									"value": "?1"
-								},
-								{
-									"key": "Referrer-Policy",
-									"value": "no-referrer"
-								},
-								{
-									"key": "Strict-Transport-Security",
-									"value": "max-age=15552000; includeSubDomains"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-DNS-Prefetch-Control",
-									"value": "off"
-								},
-								{
-									"key": "X-Download-Options",
-									"value": "noopen"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "SAMEORIGIN"
-								},
-								{
-									"key": "X-Permitted-Cross-Domain-Policies",
-									"value": "none"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "0"
+									"key": "Cache-Control",
+									"value": "no-cache, private"
 								},
 								{
 									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "65"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"41-YU3KFSTEfttrLEBxD6oKz9zn1lI\""
+									"value": "application/json"
 								},
 								{
 									"key": "Date",
-									"value": "Mon, 20 May 2024 16:50:33 GMT"
+									"value": "Sun, 14 Jul 2024 13:43:39 GMT"
 								},
 								{
-									"key": "Connection",
-									"value": "keep-alive"
+									"key": "Set-Cookie",
+									"value": "sf_redirect=deleted; expires=Sat, 15 Jul 2023 13:43:38 GMT; Max-Age=0; path=/; httponly"
 								},
 								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
+									"key": "X-Debug-Token",
+									"value": "9bcd0e"
+								},
+								{
+									"key": "X-Debug-Token-Link",
+									"value": "http://localhost:8000/_profiler/9bcd0e"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.20"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Product already added.\",\n    \"data\": null\n}"
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Product already exist\"\n}"
+						},
+						{
+							"name": "Form Validation Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"\",\n    \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health\",\n    \"price\": 250000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/products",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Jul 2024 13:50:10 GMT"
+								},
+								{
+									"key": "X-Debug-Token",
+									"value": "3c036a"
+								},
+								{
+									"key": "X-Debug-Token-Link",
+									"value": "http://localhost:8000/_profiler/3c036a"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.20"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "60"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Product name cannot be blank.\"\n}"
 						}
 					]
 				},
@@ -1482,7 +897,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Product 12\",\n    \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health.\",\n    \"price\": 35000\n}",
+							"raw": "{\n    \"name\": \"Product hello newxp\",\n    \"description\": \"mehnww.\",\n    \"price\": 37000\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1490,13 +905,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/products/664a6d214d85735ec2e9e0f1",
+							"raw": "{{baseUrl}}/products/34",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"products",
-								"664a6d214d85735ec2e9e0f1"
+								"34"
 							]
 						}
 					},
@@ -1513,7 +928,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"name\": \"Product 1\",\n    \"description\": \"This is a new product. It is very great for usage and beneficial to healt. \",\n    \"price\": 3\n}",
+									"raw": "{\n    \"name\": \"\",\n    \"description\": \"mehnww.\",\n    \"price\": 37000\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1521,102 +936,58 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/products/664886eb4804009924013f94",
+									"raw": "{{baseUrl}}/products/34",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"products",
-										"664886eb4804009924013f94"
+										"34"
 									]
 								}
 							},
-							"status": "Unprocessable Entity",
-							"code": 422,
+							"status": "Bad Request",
+							"code": 400,
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "Content-Security-Policy",
-									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
-								},
-								{
-									"key": "Cross-Origin-Opener-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Cross-Origin-Resource-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Origin-Agent-Cluster",
-									"value": "?1"
-								},
-								{
-									"key": "Referrer-Policy",
-									"value": "no-referrer"
-								},
-								{
-									"key": "Strict-Transport-Security",
-									"value": "max-age=15552000; includeSubDomains"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-DNS-Prefetch-Control",
-									"value": "off"
-								},
-								{
-									"key": "X-Download-Options",
-									"value": "noopen"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "SAMEORIGIN"
-								},
-								{
-									"key": "X-Permitted-Cross-Domain-Policies",
-									"value": "none"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "0"
+									"key": "Cache-Control",
+									"value": "no-cache, private"
 								},
 								{
 									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "97"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"61-SdYkBzZhM/SXTwowPgrfcaCjg7g\""
+									"value": "application/json"
 								},
 								{
 									"key": "Date",
-									"value": "Mon, 20 May 2024 17:26:17 GMT"
+									"value": "Sun, 14 Jul 2024 14:35:18 GMT"
 								},
 								{
-									"key": "Connection",
-									"value": "keep-alive"
+									"key": "X-Debug-Token",
+									"value": "a4fd3a"
 								},
 								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
+									"key": "X-Debug-Token-Link",
+									"value": "http://localhost:8000/_profiler/a4fd3a"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.20"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "60"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Product description cannot be less than 100 characters\",\n    \"data\": null\n}"
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Product name cannot be blank.\"\n}"
 						},
 						{
-							"name": "Product Not Found Response",
+							"name": "Product Updated Response",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [
@@ -1627,7 +998,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"name\": \"Product 1\",\n    \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health.\",\n    \"price\": 35000\n}",
+									"raw": "{\n    \"name\": \"Product hello newxp\",\n    \"description\": \"mehnww.\",\n    \"price\": 37000\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1635,99 +1006,55 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/products/664886eb4804009924013f94",
+									"raw": "{{baseUrl}}/products/34",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"products",
-										"664886eb4804009924013f94"
+										"34"
 									]
 								}
 							},
-							"status": "Not Found",
-							"code": 404,
+							"status": "OK",
+							"code": 200,
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "Content-Security-Policy",
-									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
-								},
-								{
-									"key": "Cross-Origin-Opener-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Cross-Origin-Resource-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Origin-Agent-Cluster",
-									"value": "?1"
-								},
-								{
-									"key": "Referrer-Policy",
-									"value": "no-referrer"
-								},
-								{
-									"key": "Strict-Transport-Security",
-									"value": "max-age=15552000; includeSubDomains"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-DNS-Prefetch-Control",
-									"value": "off"
-								},
-								{
-									"key": "X-Download-Options",
-									"value": "noopen"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "SAMEORIGIN"
-								},
-								{
-									"key": "X-Permitted-Cross-Domain-Policies",
-									"value": "none"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "0"
+									"key": "Cache-Control",
+									"value": "no-cache, private"
 								},
 								{
 									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "61"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"3d-81THX+cIjTCIRk+o81cqhoZrpyo\""
+									"value": "application/json"
 								},
 								{
 									"key": "Date",
-									"value": "Mon, 20 May 2024 17:28:56 GMT"
+									"value": "Sun, 14 Jul 2024 14:33:34 GMT"
 								},
 								{
-									"key": "Connection",
-									"value": "keep-alive"
+									"key": "X-Debug-Token",
+									"value": "9b5de2"
 								},
 								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
+									"key": "X-Debug-Token-Link",
+									"value": "http://localhost:8000/_profiler/9b5de2"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.20"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "542"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Product not found.\",\n    \"data\": null\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Product successfully updated\",\n    \"data\": {\n        \"id\": 34,\n        \"user\": {\n            \"id\": 24,\n            \"firstname\": \"ayodele\",\n            \"lastname\": \"oniosun\",\n            \"email\": \"ayodeleoniosun63@gmail.com\",\n            \"password\": \"$2y$13$sw72ikNqZaSdqPUtW4vEHuflN35dyvD3kpxDzC783ndGiULGmaNSi\",\n            \"createdAt\": \"2024-07-14T13:25:55+00:00\",\n            \"updatedAt\": \"2024-07-14T13:25:55+00:00\",\n            \"deletedAt\": null,\n            \"roles\": [],\n            \"userIdentifier\": \"\"\n        },\n        \"name\": \"product hello newxp\",\n        \"description\": \"mehnww.\",\n        \"price\": 250000,\n        \"createdAt\": \"2024-07-13T13:36:47+00:00\",\n        \"updatedAt\": \"2024-07-14T14:33:34+00:00\",\n        \"deletedAt\": null\n    }\n}"
 						},
 						{
 							"name": "Product Already Added Response",
@@ -1844,7 +1171,7 @@
 							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Product already added.\",\n    \"data\": null\n}"
 						},
 						{
-							"name": "Product Updated Response",
+							"name": "Product Not Found Response",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [
@@ -1855,7 +1182,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"name\": \"Product 121\",\n    \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health.\",\n    \"price\": 35000\n}",
+									"raw": "{\n    \"name\": \"Product 1\",\n    \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health.\",\n    \"price\": 35000\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1863,99 +1190,55 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/products/664b7f49de21a9cb15c2be31",
+									"raw": "{{baseUrl}}/products/344",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"products",
-										"664b7f49de21a9cb15c2be31"
+										"344"
 									]
 								}
 							},
-							"status": "OK",
-							"code": 200,
+							"status": "Not Found",
+							"code": 404,
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "Content-Security-Policy",
-									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
-								},
-								{
-									"key": "Cross-Origin-Opener-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Cross-Origin-Resource-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Origin-Agent-Cluster",
-									"value": "?1"
-								},
-								{
-									"key": "Referrer-Policy",
-									"value": "no-referrer"
-								},
-								{
-									"key": "Strict-Transport-Security",
-									"value": "max-age=15552000; includeSubDomains"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-DNS-Prefetch-Control",
-									"value": "off"
-								},
-								{
-									"key": "X-Download-Options",
-									"value": "noopen"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "SAMEORIGIN"
-								},
-								{
-									"key": "X-Permitted-Cross-Domain-Policies",
-									"value": "none"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "0"
+									"key": "Cache-Control",
+									"value": "no-cache, private"
 								},
 								{
 									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "256"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"100-3a1qozOIUIbUOI8mhKkNVWFUfp8\""
+									"value": "application/json"
 								},
 								{
 									"key": "Date",
-									"value": "Mon, 20 May 2024 17:53:50 GMT"
+									"value": "Sun, 14 Jul 2024 14:36:11 GMT"
 								},
 								{
-									"key": "Connection",
-									"value": "keep-alive"
+									"key": "X-Debug-Token",
+									"value": "467133"
 								},
 								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
+									"key": "X-Debug-Token-Link",
+									"value": "http://localhost:8000/_profiler/467133"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.20"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Product successfully updated\",\n    \"data\": {\n        \"name\": \"Product 121\",\n        \"description\": \"This is a new product. It is very great for usage and beneficial to health. It is very great for usage and beneficial to health.\",\n        \"price\": \"35,000.00\"\n    }\n}"
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Product not found\"\n}"
 						}
 					]
 				},
@@ -1974,131 +1257,17 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{baseUrl}}/products/664a6d214d85735ec2e9e0f1",
+							"raw": "{{baseUrl}}/products/34",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"products",
-								"664a6d214d85735ec2e9e0f1"
+								"34"
 							]
 						}
 					},
 					"response": [
-						{
-							"name": "Product Not Found Response",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{token}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"name\": \"Product 3\",\n    \"description\": \"This is a new product. It is very great for usage and beneficial to health\",\n    \"price\": 3\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/products/66485a117c0def0ce0f346f4",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"products",
-										"66485a117c0def0ce0f346f4"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "Content-Security-Policy",
-									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
-								},
-								{
-									"key": "Cross-Origin-Opener-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Cross-Origin-Resource-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Origin-Agent-Cluster",
-									"value": "?1"
-								},
-								{
-									"key": "Referrer-Policy",
-									"value": "no-referrer"
-								},
-								{
-									"key": "Strict-Transport-Security",
-									"value": "max-age=15552000; includeSubDomains"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-DNS-Prefetch-Control",
-									"value": "off"
-								},
-								{
-									"key": "X-Download-Options",
-									"value": "noopen"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "SAMEORIGIN"
-								},
-								{
-									"key": "X-Permitted-Cross-Domain-Policies",
-									"value": "none"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "0"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "61"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"3d-81THX+cIjTCIRk+o81cqhoZrpyo\""
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 20 May 2024 17:23:18 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Product not found.\",\n    \"data\": null\n}"
-						},
 						{
 							"name": "Product Deleted Response",
 							"originalRequest": {
@@ -2114,13 +1283,13 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{baseUrl}}/products/664b6fefcc83807b837e3e82",
+									"raw": "{{baseUrl}}/products/34",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"products",
-										"664b6fefcc83807b837e3e82"
+										"34"
 									]
 								}
 							},
@@ -2129,84 +1298,105 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "Content-Security-Policy",
-									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
-								},
-								{
-									"key": "Cross-Origin-Opener-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Cross-Origin-Resource-Policy",
-									"value": "same-origin"
-								},
-								{
-									"key": "Origin-Agent-Cluster",
-									"value": "?1"
-								},
-								{
-									"key": "Referrer-Policy",
-									"value": "no-referrer"
-								},
-								{
-									"key": "Strict-Transport-Security",
-									"value": "max-age=15552000; includeSubDomains"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-DNS-Prefetch-Control",
-									"value": "off"
-								},
-								{
-									"key": "X-Download-Options",
-									"value": "noopen"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "SAMEORIGIN"
-								},
-								{
-									"key": "X-Permitted-Cross-Domain-Policies",
-									"value": "none"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "0"
+									"key": "Cache-Control",
+									"value": "no-cache, private"
 								},
 								{
 									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "73"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"49-xPTOfzIGwp/h7qJZQ9wajtbl1zM\""
+									"value": "application/json"
 								},
 								{
 									"key": "Date",
-									"value": "Mon, 20 May 2024 17:24:43 GMT"
+									"value": "Sun, 14 Jul 2024 18:05:05 GMT"
 								},
 								{
-									"key": "Connection",
-									"value": "keep-alive"
+									"key": "X-Debug-Token",
+									"value": "399e29"
 								},
 								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
+									"key": "X-Debug-Token-Link",
+									"value": "http://localhost:8000/_profiler/399e29"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.20"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "61"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Product successfully deleted\",\n    \"data\": null\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Product successfully deleted\"\n}"
+						},
+						{
+							"name": "Product Not Found Response",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{baseUrl}}/products/34",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products",
+										"34"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Jul 2024 18:05:50 GMT"
+								},
+								{
+									"key": "X-Debug-Token",
+									"value": "deb164"
+								},
+								{
+									"key": "X-Debug-Token-Link",
+									"value": "http://localhost:8000/_profiler/deb164"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.20"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Product not found\"\n}"
 						}
 					]
 				}
@@ -2238,12 +1428,12 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://localhost:8001/api",
+			"value": "http://localhost:8000/api",
 			"type": "string"
 		},
 		{
 			"key": "token",
-			"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MjA4NjUxNDgsImV4cCI6MTcyMDk1MTU0OCwicm9sZXMiOltdLCJ1c2VybmFtZSI6ImF5b2RlbGVAZ21haWwuY29tIiwiaXAiOiIxMjcuMC4wLjEiLCJ1c2VyX2lkIjoxMX0.IJCwEOQTNo1rf9bISfQT2tzuKTeowVUu8y-3ReLedzWTFaoAoXkzRme8GD9_glkv4Y0UVpCE6iV6DCLzczDNeD6qCse1cBvOzCKB5B_gG3lkAuSkcGjfiT1DlOSKxP2Di3Yb8CUlIGfaXhoOGzsoEnwQUwsWtiDQgo4J3zwyNSJmAcmv7aG18z5wStZih0axRP9_FOHLbzQvUM00CNypDsYH_ICWXt66O3HyxHSfA4vHz5nhpKqccPg-TFVkgDa_3vSnfJeXDI2MYNjuKKD8q6wyAVFsz_qtPq45zzC4OfCH71vEYr-RZs645u4tdVucT_LiJisQG4B0CePfIJTrZA",
+			"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MjA5NjQxOTUsImV4cCI6MTcyMTA1MDU5NSwicm9sZXMiOltdLCJ1c2VybmFtZSI6ImF5b2RlbGVvbmlvc3VuNjNAZ21haWwuY29tIiwidXNlcl9pZCI6MjR9.KqT1SBHWrXSMNfPUXGASI76wov-9I2nUW2NbFQJ65NE2fcnhruKXD9qQdxViCo6wj8jrnNa4_QAzke9zQZA56nBw8vgb9MFsBzz-5zP27xIyMTne8iPxbqzyrAHXJyzoSahkEbX8tJAbUz9PTZj4ryZYWVYHzims5n2OJ891dCG9sggjdoUY3BMI4LUvM3socTJn3NeMEcDA4bwj2zhUf-YBVn3K6C1yxNAJTTl24VIVH8kuV1BI5NcpWaSBCwii1rDV7o9HBE-gJoKLfYLQBoXO5DsWhpjGjzPJDVjJH69aTUq4wHA1-WMPC13aHgtiTMTblzB5Vhb0iOokgGvLHA",
 			"type": "string"
 		}
 	]

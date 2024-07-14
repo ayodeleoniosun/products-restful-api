@@ -21,11 +21,3 @@ bash setup.sh
 ### API Documentation
 
 The Postman API collection is available [Here](public/postman_collection.json). <br/>
-
-### Automated testing
-
-Run the following command to run tests:
-
-```shell
-bash run-tests.sh
-```
